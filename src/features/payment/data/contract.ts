@@ -7,7 +7,7 @@ const c = initContract();
 export const contract = c.router({
   create: {
     method: "POST",
-    path: "/payment",
+    path: "/",
     body: paymentInputSchema,
     responses: {
       201: paymentSchema,
@@ -15,7 +15,7 @@ export const contract = c.router({
   },
   update: {
     method: "PATCH",
-    path: "/payment/:id",
+    path: "/:id",
     body: paymentInputSchema,
     responses: {
       200: paymentSchema,
@@ -23,14 +23,14 @@ export const contract = c.router({
   },
   getAll: {
     method: "GET",
-    path: "/payment",
+    path: "/",
     responses: {
       200: z.array(paymentSchema),
     },
   },
   getByID: {
     method: "GET",
-    path: "/payment/:id",
+    path: "/:id",
     responses: {
       200: paymentSchema,
     },

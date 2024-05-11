@@ -5,7 +5,7 @@ import { APIError } from "../../../config/api_error";
 import { Payment, PaymentInput } from "../../../models/payment";
 
 const client = initClient(contract, {
-  baseUrl: `${root}/auth`,
+  baseUrl: `${root}/payment`,
   baseHeaders: baseHeaders,
   api: BaseAPI,
 });

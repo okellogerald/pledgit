@@ -7,7 +7,7 @@ const c = initContract();
 export const contract = c.router({
   create: {
     method: "POST",
-    path: "/pledge",
+    path: "/",
     body: pledgeInputSchema,
     responses: {
       201: pledgeSchema,
@@ -15,7 +15,7 @@ export const contract = c.router({
   },
   update: {
     method: "PATCH",
-    path: "/pledge/:id",
+    path: "/:id",
     body: pledgeInputSchema,
     responses: {
       200: pledgeSchema,
@@ -23,14 +23,14 @@ export const contract = c.router({
   },
   getAll: {
     method: "GET",
-    path: "/pledge",
+    path: "/",
     responses: {
       200: z.array(pledgeSchema),
     },
   },
   getByID: {
     method: "GET",
-    path: "/pledge/:id",
+    path: "/:id",
     responses: {
       200: pledgeSchema,
     },

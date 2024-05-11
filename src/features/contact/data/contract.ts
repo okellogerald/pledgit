@@ -7,7 +7,7 @@ const c = initContract();
 export const contract = c.router({
   create: {
     method: "POST",
-    path: "/contact",
+    path: "/",
     body: contactInputSchema,
     responses: {
       201: contactSchema,
@@ -15,7 +15,7 @@ export const contract = c.router({
   },
   update: {
     method: "PATCH",
-    path: "/contact/:id",
+    path: "/:id",
     body: z.object({
       reference: z.string().optional(),
       firstName: z.string(),
@@ -28,14 +28,14 @@ export const contract = c.router({
   },
   getAll: {
     method: "GET",
-    path: "/contact",
+    path: "/",
     responses: {
       200: z.array(contactSchema),
     },
   },
   getByID: {
     method: "GET",
-    path: "/contact/:id",
+    path: "/:id",
     responses: {
       200: contactSchema,
     },

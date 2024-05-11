@@ -3,15 +3,16 @@ import { contract } from "./contract";
 import { BaseAPI, baseHeaders, root } from "../../../config/api";
 import { APIError } from "../../../config/api_error";
 import { Payment, PaymentInput } from "../../../models/payment";
+import { Pledge, PledgeInput } from "@/models/pledge";
 
 const client = initClient(contract, {
-  baseUrl: `${root}/auth`,
+  baseUrl: `${root}/pledge`,
   baseHeaders: baseHeaders,
   api: BaseAPI,
 });
 
-export class ContactRepo {
-  async createNew(data: PaymentInput): Promise<Payment | APIError> {
+export class PledgeRepo {
+  async createNew(data: PledgeInput): Promise<Pledge> {
     const result = await client.create({ body: data });
     if (result.status === 201) {
       return result.body;
@@ -23,7 +24,7 @@ export class ContactRepo {
     );
   }
 
-  async getAll(): Promise<Payment[] | APIError> {
+  async getAll(): Promise<Pledge[]> {
     const result = await client.getAll();
     if (result.status === 200) return result.body;
 

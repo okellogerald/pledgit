@@ -1,8 +1,8 @@
 {
   "name": "pledgit",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "main": "dist-electron/main/index.js",
-  "description": "Electron Vite React boilerplate.",
+  "description": "Desktop App implementing https://github.com/bentesha/pledgit",
   "author": "Okello Gerald",
   "license": "MIT",
   "private": true,

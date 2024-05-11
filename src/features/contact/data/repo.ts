@@ -5,7 +5,7 @@ import { Contact, ContactInput } from "../../../models/contact";
 import { APIError } from "../../../config/api_error";
 
 const client = initClient(contract, {
-  baseUrl: `${root}/auth`,
+  baseUrl: `${root}/contact`,
   baseHeaders: baseHeaders,
   api: BaseAPI,
 });

@@ -8,13 +8,15 @@ import Root from "./root";
 import DialogsRoot from "./dialogs_root";
 import { router } from "./router";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <Root>
-            <DialogsRoot>
-                <RouterProvider router={router} />
-                <ToastContainer autoClose={3000} />
-            </DialogsRoot>
-        </Root>
-    </React.StrictMode>,
-)
+export function startApp() {
+    ReactDOM.createRoot(document.getElementById('root')!).render(
+        <React.StrictMode>
+            <Root>
+                <DialogsRoot>
+                    <RouterProvider router={router} />
+                    <ToastContainer autoClose={3000} />
+                </DialogsRoot>
+            </Root>
+        </React.StrictMode>,
+    )
+}

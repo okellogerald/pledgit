@@ -5,7 +5,7 @@ import { APIError } from "../../../config/api_error";
 import { Campaign, CampaignInput } from "../../../models/campaign";
 
 const client = initClient(contract, {
-  baseUrl: `${root}/auth`,
+  baseUrl: `${root}/campaign`,
   baseHeaders: baseHeaders,
   api: BaseAPI,
 });
@@ -33,3 +33,4 @@ export class ContactRepo {
     );
   }
 }
+
