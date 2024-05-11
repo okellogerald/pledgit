@@ -1,0 +1,1 @@
+export const logoHorizURL = "/images/logo_horiz.png"
