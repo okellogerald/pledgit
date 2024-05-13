@@ -1,3 +1,7 @@
+@import "../.themes/colors/colors.css";
+@import "../.themes/text_sizes/text_sizes.css";
+@import "../.themes/space/space.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +13,8 @@
 html,
 body {
   width: "100%";
-  font-family: "GT";
-  background-color: white;
-  color: "#525f7f";
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 tr {

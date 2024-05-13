@@ -1,0 +1,31 @@
+:root {
+    --color-primary: "#6d48e5";
+    --color-onPrimary: "#FFFFFF";
+    --color-onPrimaryContainer: "#BEDBED";
+    --color-primaryShade: "#ece7fe";
+    --color-primaryShade2: "#f4f1fe";
+    --color-accent: "#000000";
+    --color-onAccent: "#FFFFFF";
+    --color-accentContainer: "#343434";
+    --color-onAccentContainer: "#FFFFFF";
+    --color-surface: "#FAF7FF";
+    --color-onSurface: "#474747";
+    --color-onSurfaceContainer: "#333";
+    --color-disabled: "#DCDCDC";
+    --color-onDisabled: "#696969";
+    --color-background: "#FFFFFF";
+    --color-onBackground: "black";
+    --color-error: "#FF77B4";
+    --color-onError: "white";
+    --color-errorContainer: "#FF77B4";
+    --color-onErrorContainer: "#000000";
+    --color-divider: "#DCDCDC";
+    --color-border: "#DCDCDC";
+    --color-text: "black";
+    --color-text2: "#6D759D";
+    --color-text3: "#9198B3";
+    --color-text4: "#b3b3b3";
+    --color-white: "#FFFFFF";
+    --color-black: "#000000";
+    --color-transparent: "transparent";
+}

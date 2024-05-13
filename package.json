@@ -1,6 +1,6 @@
 {
   "name": "pledgit",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "dist-electron/main/index.js",
   "description": "Desktop App implementing https://github.com/bentesha/pledgit",
   "author": "Okello Gerald",
@@ -15,9 +15,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
-    "preview": "vite preview",
-    "pree2e": "vite build --mode=test",
-    "e2e": "playwright test"
+    "preview": "vite preview"
   },
   "dependencies": {
     "electron-updater": "^6.1.8",

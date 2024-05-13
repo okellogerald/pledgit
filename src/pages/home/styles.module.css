@@ -1,0 +1,17 @@
+.scaffold {
+    height: "100vh";
+    width: "100vh";
+
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    padding: var(--space-m)
+}
+
+.body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: var(--space-m);
+}
+
