@@ -1,22 +1,10 @@
-import space from "@/.themes/space/space"
-import colors from "../../.themes/colors/colors"
+import styles from "@/pages/home/styles.module.css"
 
 const cardColor = "#F7E5DA"
 
 export function PaymentsCard() {
     return <>
-        <div style={{
-            height: 300,
-            width: "100%",
-            borderRadius: 20,
-            backgroundColor: cardColor,
-            color: colors.text,
-            padding: space.xs,
-
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }}>
+        <div className={styles.card} style={{ backgroundColor: cardColor }}>
             <p>Payments Card</p>
         </div>
     </>

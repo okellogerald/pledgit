@@ -1,22 +1,11 @@
-import space from "@/.themes/space/space"
-import colors from "../../.themes/colors/colors"
+import styles from "@/pages/home/styles.module.css"
 
 const cardColor = "#E2E2E2"
 
 export function CampaignsCard() {
+    // const [data, setData] = useState<AsyncState<State | undefined>>({ status: "initial" });
     return <>
-        <div style={{
-            height: 300,
-            width: "100%",
-            borderRadius: 20,
-            backgroundColor: cardColor,
-            color: colors.text,
-            padding: space.xs,
-
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }}>
+        <div className={styles.card} style={{ backgroundColor: cardColor }}>
             <p>Campaigns Card</p>
         </div>
     </>

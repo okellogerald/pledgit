@@ -2,7 +2,6 @@ import { initClient } from "@ts-rest/core";
 import { contract } from "./contract";
 import { BaseAPI, baseHeaders, root } from "../../../config/api";
 import { APIError } from "../../../config/api_error";
-import { Payment, PaymentInput } from "../../../models/payment";
 import { Pledge, PledgeInput } from "@/models/pledge";
 
 const client = initClient(contract, {

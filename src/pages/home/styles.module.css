@@ -15,3 +15,14 @@
     gap: var(--space-m);
 }
 
+.card {
+    height: 300px;
+    width: "100%";
+    border-radius: 20px;
+    padding: var(--space-m);
+    color: var(--color-text);
+
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
+}
