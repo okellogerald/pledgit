@@ -1,5 +1,5 @@
 import { createBrowserRouter, createHashRouter } from "react-router-dom";
-import { HomeView } from "../../src/pages/home/home";
+import { HomeView } from "../pages/home/home";
 
 export const router = createHashRouter([
   {

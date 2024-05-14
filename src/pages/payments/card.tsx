@@ -5,7 +5,7 @@ const cardColor = "#F7E5DA"
 export function PaymentsCard() {
     return <>
         <div className={styles.card} style={{ backgroundColor: cardColor }}>
-            <p>Payments Card</p>
+            <h1>Payments Card</h1>
         </div>
     </>
 }

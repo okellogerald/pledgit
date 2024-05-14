@@ -29,7 +29,7 @@
   "include": [
     "src",
     "electron",
-    "src/.app"
+    "src/_app"
   ],
   "references": [
     {

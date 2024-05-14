@@ -5,21 +5,21 @@
     background-color: var(--color-background);
     color: var(--color-text);
 
-    padding: var(--space-m)
+    padding: var(--space-sm)
 }
 
 .body {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
-    gap: var(--space-m);
+    gap: var(--space-sm);
 }
 
 .card {
     height: 300px;
     width: "100%";
     border-radius: 20px;
-    padding: var(--space-m);
+    padding: var(--space-sm);
     color: var(--color-text);
 
     display: "flex";

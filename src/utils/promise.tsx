@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 import { isError } from "./utils";
+import { match } from "ts-pattern";
 
 export interface InitialState {
   status: "initial";
@@ -51,7 +52,7 @@ export async function trackPromise<T>(
     return state
   }
 }
-/* 
+
 export function matchAsyncState<T, R>(
   data: AsyncState<T>,
   views: {
@@ -82,4 +83,4 @@ export function matchAsyncState<T, R>(
       return showOther()
     })
     .otherwise(showOther)
-} */
+}

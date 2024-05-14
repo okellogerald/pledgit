@@ -1,6 +1,7 @@
-@import "../.themes/colors/colors.css";
-@import "../.themes/text_sizes/text_sizes.css";
-@import "../.themes/space/space.css";
+@import "../_themes/colors/colors.css";
+@import "../_themes/text_sizes/text_sizes.css";
+@import "../_themes/space/space.css";
+@import "../_themes/constants/constants.css";
 
 * {
   margin: 0;
