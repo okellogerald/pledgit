@@ -1,6 +1,6 @@
 import styles from "@/pages/home/styles.module.css"
 
-const cardColor = "#C0DFE7"
+const cardColor = "#ecf5f8"
 
 export function PledgesCard() {
     return <>

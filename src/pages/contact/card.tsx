@@ -1,6 +1,6 @@
 import styles from "@/pages/home/styles.module.css"
 
-const cardColor = "#EBEDDF"
+const cardColor = "#f5f6ef"
 
 export function ContactsCard() {
     return <>

@@ -1,6 +1,6 @@
 import styles from "@/pages/home/styles.module.css"
 
-const cardColor = "#F7E5DA"
+const cardColor = "#fdf7f4"
 
 export function PaymentsCard() {
     return <>

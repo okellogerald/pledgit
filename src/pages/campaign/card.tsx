@@ -7,8 +7,7 @@ import styles from "@/pages/home/styles.module.css"
 import { AsyncState, matchAsyncState, trackPromise } from "@/utils/promise";
 import { useEffect, useState } from "react";
 
-const cardColor = "#E2E2E2"
-
+const cardColor = "#f6f6f6"
 
 async function fetchCampaigns(): Promise<Campaign[] | undefined> {
     try {
