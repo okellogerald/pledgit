@@ -25,7 +25,7 @@ export class ContactRepo {
 
   async getAll(): Promise<Campaign[]> {
     const result = await client.getAll();
-    if (result.status === 200) return result.body;
+    if (result.status === 200) return result.body.results;
 
     throw new APIError(
       "An error happened while fetching contacts.",

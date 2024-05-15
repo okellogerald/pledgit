@@ -56,7 +56,36 @@ const ErrorView = (tryAgainFN: () => void) => {
 const DataView = (data: Campaign[]) => {
     return (
         <div className={styles.card} style={{ backgroundColor: cardColor }}>
-            <h1>Campaigns Card</h1>
+            <div style={{
+                display: "flex",
+                width: "100%",
+
+                justifyContent: "space-between",
+                alignItems: "center",
+            }}>
+                <h3>Campaigns</h3>
+                <OutlineButton label="Add New" />
+            </div>
+            <VSpace space={20} />
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>End Date</th>
+                </tr>
+                {
+                    data.map((campaign) => {
+                        return (
+                            <tr key={campaign.id}>
+                                <td>
+                                    <h5>{campaign.name}</h5>
+                                    <p>{campaign.description}</p>
+                                </td>
+                                <td>{campaign.endDate}</td>
+                            </tr>
+                        )
+                    })
+                }
+            </table>
         </div>
     )
 }
