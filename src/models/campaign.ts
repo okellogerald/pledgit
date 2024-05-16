@@ -2,16 +2,18 @@ import { z } from "zod";
 
 export const campaignInputSchema = z.object({
   name: z.string(),
-  startDate: z.string().date(),
-  endDate: z.string().date(),
+  startDate: z.coerce.date(),
+  endDate: z.coerce.date(),
   description: z.string().optional(),
 });
 
-export const campaignSchema = z.object({
-  id: z.string(),
-  createdAt: z.string().date(),
-  updatedAt: z.string().date(),
-}).merge(campaignInputSchema);
+export const campaignSchema = z
+  .object({
+    id: z.string(),
+    createdAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
+  })
+  .merge(campaignInputSchema);
 
 export type Campaign = z.infer<typeof campaignSchema>;
 
