@@ -9,6 +9,7 @@ import { formatDate } from "@/utils/formatters";
 import { AsyncState, matchAsyncState, trackPromise } from "@/utils/promise";
 import { useEffect, useState } from "react";
 import { CAMPAIGN_ADD_PAGE_ROUTE_NAME } from "./camapign_add/campaign_add_page";
+import { CAMPAIGN_LIST_PAGE_ROUTE_NAME } from "./campaign_list/page/element";
 
 const cardColor = "#f6f6f6";
 
@@ -65,6 +66,10 @@ const DataView = (data: Campaign[]) => {
     router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
   }
 
+  function seeCampaigns() {
+    router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
+  }
+
   return (
     <div className={styles.card} style={{ backgroundColor: cardColor }}>
       <div
@@ -80,7 +85,7 @@ const DataView = (data: Campaign[]) => {
         <div>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
-          <OutlineButton label="See All" onClick={addCampaign} />
+          <OutlineButton label="See All" onClick={seeCampaigns} />
         </div>
       </div>
       <VSpace space={20} />

@@ -1,60 +1,60 @@
 @import url("../../_app/globals.css");
 
 .button {
-  font-family: "inherit";
-  cursor: "pointer";
-  font-weight: "500";
-  border-radius: var(--border-radius);
-  border-style: "none";
+    font-family: "inherit";
+    cursor: "pointer";
+    font-weight: "500";
+    border-radius: var(--border-radius2);
+    border-style: "none";
 
-  display: "flex";
-  align-items: "center";
-  justify-content: "center";
-  gap: 10px;
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
+    gap: 10px;
 
-  background-color: "#00246B";
-  color: "#FFFFFF";
+    background-color: "#00246B";
+    color: "#FFFFFF";
 
-  padding: var(--space-sm);
+    padding: var(--space-sm);
 }
 
 .transparent_button {
-  font-family: "inherit";
-  cursor: "pointer";
-  font-weight: 500;
-  border-radius: 30px;
-  border-style: "none";
+    font-family: "inherit";
+    cursor: "pointer";
+    font-weight: 500;
+    border-radius: 30px;
+    border-style: "none";
 
-  display: "flex";
-  align-items: "center";
-  justify-content: "center";
-  gap: 10;
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
+    gap: 10;
 
-  background-color: var(--color-transparent);
-  color: var(--color-text);
+    background-color: var(--color-transparent);
+    color: var(--color-text);
 
-  border-style: none;
-  border-width: 1.5px;
-  border-color: var(---color-border);
+    border-style: none;
+    border-width: 1.5px;
+    border-color: var(---color-border);
 }
 
 .outline_button {
-  font-family: "inherit";
-  cursor: "pointer";
-  font-weight: 500;
-  border-radius: var(--border-radius);
-  border-style: "none";
-  background-color: var(--color-transparent);
-  color: var(--color-primary);
+    font-family: "inherit";
+    cursor: "pointer";
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    border-style: "none";
+    background-color: var(--color-transparent);
+    color: var(--color-primary);
 
-  border-style: solid;
-  border-width: 1.5px;
-  border-color: var(---color-border);
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: var(---color-border);
 
-  padding: var(--space-2xs) var(--space-xs);
+    padding: var(--space-2xs) var(--space-xs);
 
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-  gap: var(--space-md);
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+    gap: var(--space-md);
 }
