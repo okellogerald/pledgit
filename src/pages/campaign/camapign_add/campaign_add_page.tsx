@@ -5,72 +5,95 @@ import {
   SimpleFormSubmit,
   SimpleInput,
 } from "@/_components/form/simple_components";
-import { ChangeEvent, useState } from "react";
-
-import moment from "moment";
 
 import styles from "./_styles.module.css";
 import Header from "./header";
 import { VSpace } from "@/_components/space";
+import { useStore } from "zustand";
+import { campaignAddFormValuesStore } from "./store";
+import { CampaignManager } from "@/features/campaign/manager";
+import { useEffect, useState } from "react";
+import {
+  AsyncState,
+  isLoading,
+  isSuccess,
+  matchAsyncState,
+  trackPromise,
+} from "@/utils/promise";
+import { Campaign } from "@/models/campaign";
+import { FilledButton } from "@/_components/buttons/filled_button";
+import { goToDashboard } from "@/utils/utils";
 
 export const CAMPAIGN_ADD_PAGE_ROUTE_NAME = "campaign-add-page";
 
-interface DateRange {
-  startDate: string;
-  endDate: string;
-}
+const validate = () => {
+  const formState = campaignAddFormValuesStore.getState();
+  return formState.validate();
+};
 
-const format = "YYYY-MM-DD";
+const addCampaign = async () => {
+  const valid = validate();
+  if (!valid) return;
 
-function formatDate(date: moment.MomentInput) {
-  return moment(date).format(format);
-}
+  const data = campaignAddFormValuesStore.getState().getCampaignInput();
+  return await CampaignManager.instance.add(data);
+};
 
 export default function CampaignAddPage() {
-  var currentDate = new Date();
-  var previousMonthDate = new Date(currentDate);
-  previousMonthDate.setMonth(currentDate.getMonth() - 1);
+  const formState = useStore(campaignAddFormValuesStore);
 
-  var defaultEndDate = formatDate(currentDate);
-  var defaultStartDate = formatDate(previousMonthDate);
-
-  const [range, setRange] = useState<DateRange>({
-    startDate: defaultStartDate,
-    endDate: defaultEndDate,
+  const [data, setData] = useState<AsyncState<Campaign | undefined>>({
+    status: "initial",
   });
+  const loading = isLoading(data);
+  const success = isSuccess(data, { condition: (d) => d !== undefined });
+  const disabled = loading || success;
 
-  const setStartDate = (e: ChangeEvent) => {
-    var formattedDate = formatDate((e.target as any).value);
-    setRange({ ...range, startDate: formattedDate });
-  };
-  const setEndDate = (e: ChangeEvent) => {
-    var formattedDate = formatDate((e.target as any).value);
-    setRange({ ...range, endDate: formattedDate });
+  useEffect(() => {
+    formState.init();
+  }, []);
+
+  const submit = async function () {
+    const state = await trackPromise(addCampaign(), setData);
+    if (state.status === "success" && state.data !== undefined) {
+      goToDashboard();
+    }
   };
 
   return (
     <>
       <div className={styles.scaffold}>
         <div className={styles.header}>
-          <Header />{" "}
+          <Header />
         </div>
         <div className={styles.body}>
           <div className={styles.form}>
             <h3>Add Campaign</h3>
             <VSpace />
             <FormRoot>
-              <SimpleFormField label="Campaign Name"> </SimpleFormField>
+              <SimpleFormField
+                label="Campaign Name"
+                placeholder="E.g Construction"
+                onChange={formState.setCampaignName}
+              >
+                {" "}
+              </SimpleFormField>
               <div style={{ width: "100%" }}>
                 <Label lbl="Campaign Description" />
-                <textarea required style={input}></textarea>
+                <textarea
+                  required
+                  placeholder="E.g Expanding the church building"
+                  style={input}
+                  onInput={formState.setCampaignDescription}
+                ></textarea>
               </div>
               <div style={{ width: "100%" }}>
                 <Label lbl="Start Date" />
                 <SimpleInput
                   id={"start-date"}
                   type="date"
-                  value={range.startDate}
-                  onChange={setStartDate}
+                  value={formState.startDate}
+                  onChange={formState.setStartDate}
                   style={{
                     paddingRight: 0,
                     marginRight: 0,
@@ -82,8 +105,8 @@ export default function CampaignAddPage() {
                 <SimpleInput
                   id={"end-date"}
                   type="date"
-                  value={range.endDate}
-                  onChange={setEndDate}
+                  value={formState.endDate}
+                  onChange={formState.setEndDate}
                   style={{
                     paddingRight: 0,
                     marginRight: 0,
@@ -91,7 +114,14 @@ export default function CampaignAddPage() {
                 ></SimpleInput>
               </div>
 
-              <SimpleFormSubmit />
+              <FilledButton
+                fillWidth
+                disabled={disabled}
+                showLoading={loading}
+                onClick={submit}
+                label="Continue"
+                type="submit"
+              />
             </FormRoot>
           </div>
         </div>

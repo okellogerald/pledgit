@@ -1,5 +1,6 @@
 import { redirect } from "react-router-dom";
 import { ChangeEvent } from "react";
+import { router } from "@/_app/router";
 
 export function delay(milliseconds: number): Promise<void> {
   return new Promise<void>((resolve) => {
@@ -10,8 +11,10 @@ export function delay(milliseconds: number): Promise<void> {
 }
 
 export function getRandomID(): string {
-  return Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15);
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
 }
 
 export function compareDates(a: Date, b: Date): number {
@@ -58,11 +61,13 @@ export function getFirstNameOnly(str: string): string {
 }
 
 export function isError(e: any): e is Error {
-  return e &&
+  return (
+    e &&
     e.stack &&
     e.message &&
     typeof e.stack === "string" &&
-    typeof e.message === "string";
+    typeof e.message === "string"
+  );
 }
 
 export const formatAmount = (
@@ -101,6 +106,14 @@ export const getTrimmedValueFromChangeInputEvent = (e: ChangeEvent): string => {
 };
 
 export const getValueFromChangeInputEvent = (e: ChangeEvent): string => {
-  const value = ((e.target as any).value as string);
+  const value = (e.target as any).value as string;
   return value;
 };
+
+export function goToDashboard() {
+  router.navigate("/");
+}
+
+export function redirectToDashboard() {
+  return redirect("/");
+}

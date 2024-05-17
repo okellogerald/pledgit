@@ -32,55 +32,82 @@ export async function trackPromise<T>(
   set: React.Dispatch<React.SetStateAction<AsyncState<T>>>,
   options?: {
     showErrorMessage?: boolean;
-  }
+  },
 ): Promise<AsyncState<T>> {
   set({ status: "loading" });
   try {
     const result = await promise;
-    const state: SuccessState<T> = { status: "success", data: result }
+    const state: SuccessState<T> = { status: "success", data: result };
     set(state);
-    return state
+    return state;
   } catch (error) {
-    let state: ErrorState
+    let state: ErrorState;
     if (isError(error)) {
-      state = { status: "error", errorMessage: error.message }
-      let showMessage = options?.showErrorMessage === true || options?.showErrorMessage === undefined
-      if (showMessage) toast.error(error.message)
+      state = { status: "error", errorMessage: error.message };
+      let showMessage =
+        options?.showErrorMessage === true ||
+        options?.showErrorMessage === undefined;
+      if (showMessage) toast.error(error.message);
     }
-    state = { status: "error" }
+    state = { status: "error" };
     set(state);
-    return state
+    return state;
   }
 }
 
 export function matchAsyncState<T, R>(
   data: AsyncState<T>,
   views: {
-    otherwise: () => R,
-    onInitial?: () => R,
-    onLoading?: (msg?: string) => R,
-    onError?: (msg?: string) => R,
-    onSuccess?: (data: T) => R,
+    otherwise: () => R;
+    onInitial?: () => R;
+    onLoading?: (msg?: string) => R;
+    onError?: (msg?: string) => R;
+    onSuccess?: (data: T) => R;
   },
 ): R {
-  function showOther() { return views.otherwise(); }
+  function showOther() {
+    return views.otherwise();
+  }
 
   return match(data)
     .with({ status: "initial" }, function () {
       if (views.onInitial) return views.onInitial();
-      return showOther()
+      return showOther();
     })
     .with({ status: "loading" }, function (r) {
       if (views.onLoading) return views.onLoading(r.loadingMessage);
-      return showOther()
+      return showOther();
     })
     .with({ status: "error" }, function (r) {
       if (views.onError) return views.onError(r.errorMessage);
-      return showOther()
+      return showOther();
     })
     .with({ status: "success" }, function (r) {
       if (views.onSuccess) return views.onSuccess(r.data);
-      return showOther()
+      return showOther();
     })
-    .otherwise(showOther)
+    .otherwise(showOther);
+}
+
+export function isLoading(data: AsyncState<any>): boolean {
+  return matchAsyncState(data, {
+    onLoading: () => true,
+    otherwise: () => false,
+  });
+}
+
+export function isSuccess<T>(
+  data: AsyncState<T>,
+  props?: { condition?: (data: T) => boolean },
+): boolean {
+  return matchAsyncState(data, {
+    otherwise: () => false,
+    onSuccess: function (r) {
+      if (props?.condition !== undefined) {
+        return props!.condition!(r);
+      }
+
+      return true;
+    },
+  });
 }

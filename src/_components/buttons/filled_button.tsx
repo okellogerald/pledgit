@@ -47,11 +47,7 @@ export const FilledButton: React.FC<Props> = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {showLoading && (
-        <>
-          <LoadingIndicator color={_style.color} />
-        </>
-      )}
+      {showLoading && <LoadingIndicator color={_style.color} />}
       {!showLoading && label && (
         <p style={{ margin: 0, padding: 0 }}>{label}</p>
       )}
