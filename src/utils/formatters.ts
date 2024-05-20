@@ -26,7 +26,7 @@ export function formatDate(
   date: moment.MomentInput,
   props?: { format: string },
 ) {
-  return moment(date).format(props?.format);
+  return moment(date).format(props?.format ?? "MMM DD, YYYY");
 }
 
 export function parseDate(str: string) {

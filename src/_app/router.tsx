@@ -6,7 +6,7 @@ import CampaignAddPage, {
 import {
   CAMPAIGN_LIST_PAGE_ROUTE_NAME,
   CampaignListPage,
-} from "@/pages/campaign/campaign_list/page/element";
+} from "@/pages/campaign/campaign_list/element";
 import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME, CampaignEditPage, CampaignEditPageLoader } from "@/pages/campaign/campaign_edit/element";
 
 export const router = createHashRouter([

@@ -8,10 +8,12 @@ import styles from "@/pages/home/styles.module.css";
 import { formatDate } from "@/utils/formatters";
 import { AsyncState, matchAsyncState, trackPromise } from "@/utils/promise";
 import { useEffect, useState } from "react";
-import { CAMPAIGN_ADD_PAGE_ROUTE_NAME } from "./camapign_add/campaign_add_page";
-import { CAMPAIGN_LIST_PAGE_ROUTE_NAME } from "./campaign_list/page/element";
-import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "./campaign_edit/element";
-import { campaignEditFormValuesStore } from "./campaign_edit/store";
+import { CAMPAIGN_ADD_PAGE_ROUTE_NAME } from "../camapign_add/campaign_add_page";
+import { CAMPAIGN_LIST_PAGE_ROUTE_NAME } from "../campaign_list/element";
+import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
+import { campaignEditFormValuesStore } from "../campaign_edit/store";
+
+import cardStyles from "./styles.module.css";
 
 const cardColor = "#f6f6f6";
 
@@ -87,7 +89,7 @@ const DataView = (data: Campaign[]) => {
           alignItems: "center",
         }}
       >
-        <h3>Campaigns</h3>
+        <h4>Campaigns</h4>
         <div>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
@@ -95,12 +97,12 @@ const DataView = (data: Campaign[]) => {
         </div>
       </div>
       <VSpace space={20} />
-      <table>
+      <table className={cardStyles.table}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th className={cardStyles.th}>Name</th>
+            <th className={cardStyles.th}>Start Date</th>
+            <th className={cardStyles.th}>End Date</th>
           </tr>
         </thead>
         <tbody>
@@ -108,11 +110,11 @@ const DataView = (data: Campaign[]) => {
             return (
               <tr key={campaign.id} onClick={() => editCampaign(campaign)}>
                 <td>
-                  <h5>{campaign.name}</h5>
-                  {campaign.description && <p>{campaign.description}</p>}
+                  <p className={cardStyles.campaign_name}>{campaign.name}</p>
+                  {campaign.description && <p className={cardStyles.td}>{campaign.description}</p>}
                 </td>
-                <td>{formatDate(campaign.startDate)}</td>
-                <td>{formatDate(campaign.endDate)}</td>
+                <td className={cardStyles.td}>{formatDate(campaign.startDate)}</td>
+                <td className={cardStyles.td}>{formatDate(campaign.endDate)}</td>
               </tr>
             );
           })}

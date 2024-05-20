@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs } from "react-router-dom";
 import { CampaignListPageBody } from "./body";
-import Header from "../../camapign_add/header";
+import Header from "../camapign_add/header";
 
 import styles from "./_styles.module.css";
 

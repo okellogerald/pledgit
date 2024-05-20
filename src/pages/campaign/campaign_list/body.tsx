@@ -5,7 +5,7 @@ import { Campaign } from "@/models/campaign";
 import { formatDate } from "@/utils/formatters";
 import { ColumnDef } from "@tanstack/react-table";
 import { useStore } from "zustand";
-import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../../campaign_edit/element";
+import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
 
 export function CampaignListPageBody() {
   const cmpgns = useStore(campaignsStateStore).campaigns;

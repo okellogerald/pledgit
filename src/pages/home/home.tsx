@@ -1,4 +1,4 @@
-import { CampaignsCard } from "../campaign/card";
+import { CampaignsCard } from "../campaign/homepage_card/card";
 import { ContactsCard } from "../contact/card";
 import { PaymentsCard } from "../payments/card";
 import { PledgesCard } from "../pledge/card";

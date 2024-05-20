@@ -1,0 +1,31 @@
+@import url("../../../_themes/colors/colors.css");
+
+.table {
+    border-spacing: var(--space-xs);
+}
+
+.th {
+    color: var(--color-text2);
+    text-align: start;
+
+    font-weight: 400;
+    font-size: var(--text-xs);
+}
+
+.td {
+    color: var(--color-text3); 
+    text-align: start;
+
+    font-weight: 300;
+    font-size: var(--text-p);
+}
+
+.campaign_name {
+    color: var(--color-text);
+    text-align: start;
+
+    font-weight: 400;
+    font-size: var(--text-p);
+
+    padding-bottom: var(--space-3xs);
+}

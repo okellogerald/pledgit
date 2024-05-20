@@ -8,8 +8,8 @@ export const LoadingIndicator: React.FC<{ h?: number, w?: number, color?: string
         height={h ?? 20}
         width={w ?? 20}
         strokeWidth={5}
-        secondaryColor={bgColor ?? colors.surface}
-        color={color ?? colors.accent}
+        secondaryColor={bgColor ?? colors.primaryContainer}
+        color={color ?? colors.primary}
         ariaLabel="oval-loading"
         wrapperStyle={{}}
         wrapperClass=""
