@@ -14,6 +14,7 @@ import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
 import { campaignEditFormValuesStore } from "../campaign_edit/store";
 
 import cardStyles from "./styles.module.css";
+import colors from "@/_themes/colors/colors";
 
 const cardColor = "#f6f6f6";
 
@@ -89,7 +90,7 @@ const DataView = (data: Campaign[]) => {
           alignItems: "center",
         }}
       >
-        <h4>Campaigns</h4>
+        <h5>Campaigns</h5>
         <div>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
@@ -110,7 +111,7 @@ const DataView = (data: Campaign[]) => {
             return (
               <tr key={campaign.id} onClick={() => editCampaign(campaign)}>
                 <td>
-                  <p className={cardStyles.campaign_name}>{campaign.name}</p>
+                  <p className={cardStyles.campaign_name} /* style={{color: colors.text2}} */>{campaign.name}</p>
                   {campaign.description && <p className={cardStyles.td}>{campaign.description}</p>}
                 </td>
                 <td className={cardStyles.td}>{formatDate(campaign.startDate)}</td>
