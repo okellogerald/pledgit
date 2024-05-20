@@ -75,7 +75,7 @@ export function Table<T>(props: TableProps<T>): React.ReactNode {
 
         <tbody>
           {table.getRowModel().rows.map(function (r) {
-            function callback() {
+            function onRowClick() {
               if (props.onRowClick) props.onRowClick(r.original);
             }
 
@@ -85,7 +85,7 @@ export function Table<T>(props: TableProps<T>): React.ReactNode {
             }
 
             return (
-              <tr key={r.id} onClick={callback} style={styles.tableDataRow}>
+              <tr key={r.id} onClick={onRowClick} style={styles.tableDataRow}>
                 {r.getVisibleCells().map(function (c, i) {
                   const _styles: CSSProperties =
                     i === 0 ? styles.firstData : {};

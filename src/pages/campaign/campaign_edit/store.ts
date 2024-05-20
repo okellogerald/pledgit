@@ -1,4 +1,4 @@
-import { CampaignInput } from "@/models/campaign";
+import { Campaign, CampaignEditInput, CampaignInput } from "@/models/campaign";
 import { formatDate, parseDate } from "@/utils/formatters";
 import {
   ChangeEvent,
@@ -8,7 +8,9 @@ import {
 } from "react";
 import { createStore } from "zustand";
 
-export interface CampaignAddFormState {
+export interface CampaignEditFormState {
+  startValue?: Campaign;
+
   campaignName: string;
   campaignDesc: string;
   startDate: string;
@@ -19,33 +21,71 @@ export interface CampaignAddFormState {
   setStartDate: ChangeEventHandler<HTMLInputElement>;
   setEndDate: ChangeEventHandler<HTMLInputElement>;
 
+  setStartValue: (campaign: Campaign) => void;
+
   hasAllFieldsFilled: () => boolean;
   validate: () => boolean;
 
   init: () => void;
-  getCampaignInput: () => CampaignInput;
+  getCampaignEditInput: () => CampaignEditInput;
+
+  hasAnythingChanged: () => boolean;
 }
 
-export const campaignAddFormValuesStore = createStore<CampaignAddFormState>()(
+export const campaignEditFormValuesStore = createStore<CampaignEditFormState>()(
   (set, get) => ({
+    startValue: undefined,
+
     campaignName: "",
     campaignDesc: "",
     startDate: "",
     endDate: "",
 
-    init: () => {
-      var currentDate = new Date();
-      var previousMonthDate = new Date(currentDate);
-      previousMonthDate.setMonth(currentDate.getMonth() - 1);
-
-      var defaultEndDate = _formatDate(currentDate);
-      var defaultStartDate = _formatDate(previousMonthDate);
-
-      set({ startDate: defaultStartDate, endDate: defaultEndDate });
+    setStartValue(campaign) {
+      set({ startValue: campaign });
     },
 
-    getCampaignInput() {
-      const data: CampaignInput = {
+    hasAnythingChanged: () => {
+      const startValue = get().startValue;
+      if (startValue === undefined) return false;
+
+      const hasSameName = _compareText(startValue.name, get().campaignName);
+      const hasSameDesc = _compareText(
+        startValue.description ?? "",
+        get().campaignDesc,
+      );
+      const hasSameStart = _compareText(
+        _formatDate(startValue.startDate),
+        get().startDate,
+      );
+      const hasSameEnd = _compareText(
+        _formatDate(startValue.endDate),
+        get().endDate,
+      );
+
+      return !(
+        hasSameName &&
+        hasSameDesc &&
+        hasSameStart &&
+        hasSameEnd
+      );
+    },
+
+    init: () => {
+      const campaign = get().startValue;
+      if (campaign === undefined) return;
+
+      set({
+        campaignName: campaign.name,
+        campaignDesc: campaign.description,
+        startDate: _formatDate(campaign.startDate),
+        endDate: _formatDate(campaign.endDate),
+      });
+    },
+
+    getCampaignEditInput() {
+      const data: CampaignEditInput = {
+        campaignId: get().startValue!.id,
         name: get().campaignName,
         description: get().campaignDesc,
         startDate: parseDate(get().startDate),
@@ -67,7 +107,7 @@ export const campaignAddFormValuesStore = createStore<CampaignAddFormState>()(
       const hasData = get().hasAllFieldsFilled();
 
       try {
-        get().getCampaignInput();
+        get().getCampaignEditInput();
       } catch (_) {
         return false;
       }
@@ -95,4 +135,8 @@ export const campaignAddFormValuesStore = createStore<CampaignAddFormState>()(
 
 function _formatDate(date: moment.MomentInput) {
   return formatDate(date, { format: "YYYY-MM-DD" });
+}
+
+function _compareText(a: string, b: string) {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
 }

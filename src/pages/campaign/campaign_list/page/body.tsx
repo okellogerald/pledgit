@@ -1,9 +1,11 @@
+import { router } from "@/_app/router";
 import Table from "@/_components/table/table";
 import { campaignsStateStore } from "@/features/campaign/store";
 import { Campaign } from "@/models/campaign";
 import { formatDate } from "@/utils/formatters";
 import { ColumnDef } from "@tanstack/react-table";
 import { useStore } from "zustand";
+import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../../campaign_edit/element";
 
 export function CampaignListPageBody() {
   const cmpgns = useStore(campaignsStateStore).campaigns;
@@ -35,14 +37,22 @@ export function CampaignListPageBody() {
       cell(props) {
         return <p>{formatDate(props.row.original.endDate)}</p>;
       },
-    },
+    }
   ];
+
+  const onRowClick = (campaign: Campaign) => {
+    router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
+  }
 
   return (
     <>
       {cmpgns.length > 0 && (
         <div>
-          <Table data={cmpgns} columns={columns} onRowClick={() => {}} />
+          <Table
+            data={cmpgns}
+            columns={columns}
+            onRowClick={(r) => onRowClick(r)}
+          />
         </div>
       )}
     </>

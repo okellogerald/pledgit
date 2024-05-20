@@ -10,6 +10,8 @@ import { AsyncState, matchAsyncState, trackPromise } from "@/utils/promise";
 import { useEffect, useState } from "react";
 import { CAMPAIGN_ADD_PAGE_ROUTE_NAME } from "./camapign_add/campaign_add_page";
 import { CAMPAIGN_LIST_PAGE_ROUTE_NAME } from "./campaign_list/page/element";
+import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "./campaign_edit/element";
+import { campaignEditFormValuesStore } from "./campaign_edit/store";
 
 const cardColor = "#f6f6f6";
 
@@ -26,9 +28,7 @@ export function CampaignsCard() {
     status: "initial",
   });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(() => { fetchData() }, []);
 
   const fetchData = () => trackPromise(fetchCampaigns(), setData);
 
@@ -62,8 +62,14 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Campaign[]) => {
+
   function addCampaign() {
     router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
+  }
+
+  const editCampaign = (campaign: Campaign) => {
+    campaignEditFormValuesStore.getState().setStartValue(campaign)
+    router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
   }
 
   function seeCampaigns() {
@@ -90,23 +96,27 @@ const DataView = (data: Campaign[]) => {
       </div>
       <VSpace space={20} />
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-        </tr>
-        {data.map((campaign) => {
-          return (
-            <tr key={campaign.id}>
-              <td>
-                <h5>{campaign.name}</h5>
-                {campaign.description && <p>{campaign.description}</p>}
-              </td>
-              <td>{formatDate(campaign.startDate)}</td>
-              <td>{formatDate(campaign.endDate)}</td>
-            </tr>
-          );
-        })}
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((campaign) => {
+            return (
+              <tr key={campaign.id} onClick={() => editCampaign(campaign)}>
+                <td>
+                  <h5>{campaign.name}</h5>
+                  {campaign.description && <p>{campaign.description}</p>}
+                </td>
+                <td>{formatDate(campaign.startDate)}</td>
+                <td>{formatDate(campaign.endDate)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Campaign, CampaignInput } from "@/models/campaign";
+import { Campaign, CampaignEditInput, CampaignInput } from "@/models/campaign";
 import { ContactRepo } from "./data/repo";
 import { campaignsStateStore } from "./store";
 
@@ -25,5 +25,9 @@ export class CampaignManager {
 
   async add(data: CampaignInput): Promise<Campaign> {
     return await this.repo.createNew(data);
+  }
+
+  async edit(data: CampaignEditInput): Promise<Campaign> {
+    return await this.repo.edit(data);
   }
 }

@@ -5,7 +5,7 @@ import {
   SimpleInput,
 } from "@/_components/form/simple_components";
 
-import styles from "./_styles.module.css";
+import styles from "../campaign_edit/_styles.module.css";
 import Header from "./header";
 import { VSpace } from "@/_components/space";
 import { useStore } from "zustand";

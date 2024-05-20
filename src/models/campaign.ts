@@ -18,3 +18,9 @@ export const campaignSchema = z
 export type Campaign = z.infer<typeof campaignSchema>;
 
 export type CampaignInput = z.infer<typeof campaignInputSchema>;
+
+const campaignEditInputSchema = z.object({
+  campaignId: z.string(),
+}).merge(campaignInputSchema);
+
+export type CampaignEditInput = z.infer<typeof campaignEditInputSchema>;
