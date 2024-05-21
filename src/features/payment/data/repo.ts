@@ -2,7 +2,11 @@ import { initClient } from "@ts-rest/core";
 import { contract } from "./contract";
 import { BaseAPI, baseHeaders, root } from "../../../config/api";
 import { APIError } from "../../../config/api_error";
-import { Payment, PaymentInput } from "../../../models/payment";
+import {
+  Payment,
+  PaymentEditInput,
+  PaymentInput,
+} from "../../../models/payment";
 
 const client = initClient(contract, {
   baseUrl: `${root}/payment`,
@@ -10,7 +14,7 @@ const client = initClient(contract, {
   api: BaseAPI,
 });
 
-export class ContactRepo {
+export class PaymentsRepo {
   async createNew(data: PaymentInput): Promise<Payment> {
     const result = await client.create({ body: data });
     if (result.status === 201) {
@@ -18,17 +22,33 @@ export class ContactRepo {
     }
 
     throw new APIError(
-      "An error happened while recording the payment.",
+      "An error happened while recording the payment",
       result.status,
     );
   }
 
   async getAll(): Promise<Payment[]> {
-    const result = await client.getAll();
-    if (result.status === 200) return result.body;
+    const response = await client.getAll();
+    if (response.status === 200) return response.body.results;
 
     throw new APIError(
-      "An error happened while fetching payments.",
+      "An error happened while fetching payments",
+      response.status,
+    );
+  }
+  async edit(data: PaymentEditInput): Promise<Payment> {
+    const { paymentId, ...rest } = data;
+
+    const result = await client.update({
+      params: { id: paymentId },
+      body: rest,
+    });
+    if (result.status === 200) {
+      return result.body;
+    }
+
+    throw new APIError(
+      "An error happened while editing payment info",
       result.status,
     );
   }

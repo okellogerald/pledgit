@@ -4,9 +4,9 @@ import { pledgeSchema } from "./pledge";
 import { campaignSchema } from "./campaign";
 
 export const paymentInputSchema = z.object({
-    amount: z.number(),
-    notes: z.string().optional(),
-})
+  amount: z.number(),
+  notes: z.string().optional(),
+});
 
 export const paymentSchema = z.object({
   id: z.string(),
@@ -23,10 +23,15 @@ export const paymentSchema = z.object({
 
   contact: contactSchema,
   pledge: pledgeSchema,
-  campaing: campaignSchema,
+  campaign: campaignSchema,
 });
 
 export type Payment = z.infer<typeof paymentSchema>;
 
-export type PaymentInput = z.infer<typeof paymentSchema>;
+export type PaymentInput = z.infer<typeof paymentInputSchema>;
 
+const paymentEditInputSchema = z
+  .object({ paymentId: z.string() })
+  .merge(paymentInputSchema);
+
+export type PaymentEditInput = z.infer<typeof paymentEditInputSchema>;

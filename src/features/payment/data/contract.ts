@@ -23,9 +23,9 @@ export const contract = c.router({
   },
   getAll: {
     method: "GET",
-    path: "/",
+    path: "/?eager=[contact,campaign,pledge]",
     responses: {
-      200: z.array(paymentSchema),
+      200: z.object({ results: z.array(paymentSchema) }),
     },
   },
   getByID: {

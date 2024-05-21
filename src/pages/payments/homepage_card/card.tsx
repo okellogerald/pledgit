@@ -6,20 +6,20 @@ import { AsyncState, matchAsyncState, trackPromise } from "@/utils/promise";
 import { useEffect, useState } from "react";
 
 import cardStyles from "./styles.module.css";
-import { Pledge } from "@/models/pledge";
-import { PledgesManager } from "@/features/pledge/manager";
+import { Payment } from "@/models/payment";
+import { PaymentsManager } from "@/features/payment/manager";
 import { formatTZAmount } from "@/utils/formatters";
 
-async function fetchPledges(): Promise<Pledge[] | undefined> {
+async function fetchPayments(): Promise<Payment[] | undefined> {
   try {
-    return await PledgesManager.instance.getAll();
+    return await PaymentsManager.instance.getAll();
   } catch (error) {
     console.log(error);
   }
 }
 
-export function PledgesCard() {
-  const [data, setData] = useState<AsyncState<Pledge[] | undefined>>({
+export function PaymentsCard() {
+  const [data, setData] = useState<AsyncState<Payment[] | undefined>>({
     status: "initial",
   });
 
@@ -27,7 +27,7 @@ export function PledgesCard() {
     fetchData();
   }, []);
 
-  const fetchData = () => trackPromise(fetchPledges(), setData);
+  const fetchData = () => trackPromise(fetchPayments(), setData);
 
   return matchAsyncState(data, {
     onError: () => ErrorView(fetchData),
@@ -56,12 +56,12 @@ const ErrorView = (tryAgainFN: () => void) => {
   );
 };
 
-const DataView = (data: Pledge[]) => {
+const DataView = (data: Payment[]) => {
   function addCampaign() {
     // router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
   }
 
-  const editCampaign = (pledge: Pledge) => {
+  const editCampaign = (payment: Payment) => {
     // campaignEditFormValuesStore.getState().setStartValue(campaign);
     //router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
   };
@@ -81,7 +81,7 @@ const DataView = (data: Pledge[]) => {
           alignItems: "center",
         }}
       >
-        <h6 className={cardStyles.title}>Pledges</h6>
+        <h6 className={cardStyles.title}>Payments</h6>
         <div>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
@@ -105,7 +105,9 @@ const DataView = (data: Pledge[]) => {
                   {e.contact.firstName} {e.contact.lastName}
                 </td>
                 <td className={cardStyles.td}>{e.campaign.name}</td>
-                <td className={cardStyles.td}> {formatTZAmount(e.amount)}</td>
+                <td className={cardStyles.td}>
+                  {formatTZAmount(e.pledge.amount)}
+                </td>
               </tr>
             );
           })}
