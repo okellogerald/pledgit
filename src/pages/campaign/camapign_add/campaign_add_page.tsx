@@ -5,7 +5,7 @@ import {
   SimpleInput,
 } from "@/_components/form/simple_components";
 
-import styles from "../campaign_edit/_styles.module.css";
+import styles from "./_styles.module.css";
 import Header from "./header";
 import { VSpace } from "@/_components/space";
 import { useStore } from "zustand";
@@ -66,16 +66,14 @@ export default function CampaignAddPage() {
         </div>
         <div className={styles.body}>
           <div className={styles.form}>
-            <h3>Add Campaign</h3>
+            <h5>Add Campaign</h5>
             <VSpace />
             <FormRoot>
               <SimpleFormField
                 label="Campaign Name"
                 placeholder="E.g Construction"
                 onChange={formState.setCampaignName}
-              >
-                {" "}
-              </SimpleFormField>
+              ></SimpleFormField>
               <div style={{ width: "100%" }}>
                 <Label lbl="Campaign Description" />
                 <textarea

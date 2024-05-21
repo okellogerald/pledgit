@@ -5,7 +5,6 @@ import {
   SimpleInput,
 } from "@/_components/form/simple_components";
 
-import styles from "./_styles.module.css";
 import { VSpace } from "@/_components/space";
 import { useStore } from "zustand";
 import { CampaignManager } from "@/features/campaign/manager";
@@ -20,7 +19,8 @@ import { Campaign } from "@/models/campaign";
 import { FilledButton } from "@/_components/buttons/filled_button";
 import { goToDashboard } from "@/utils/utils";
 import { campaignEditFormValuesStore } from "./store";
-import { router } from "@/_app/router";
+
+import styles from "./_body.module.css";
 
 const validate = () => {
   const formState = campaignEditFormValuesStore.getState();
@@ -65,7 +65,7 @@ export default function CampaignEditPageBody() {
   return (
     <>
       <div className={styles.form}>
-        <h3>Edit Campaign</h3>
+        <h5 className={styles.title}>Edit Campaign</h5>
         <VSpace />
         <FormRoot>
           <SimpleFormField

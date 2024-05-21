@@ -146,8 +146,8 @@ export const SimpleInput: React.FC<SimpleInputProps> = ({
     alignItems: "center",
     justifyContent: "space-between",
 
-    backgroundColor: props.style?.backgroundColor ?? colors.surface,
-    color: colors.onSurface,
+    backgroundColor: props.style?.backgroundColor ?? colors.primaryContainer,
+    color: colors.onPrimaryContainer,
 
     margin: 0,
     padding: 0,
@@ -168,7 +168,7 @@ export const SimpleInput: React.FC<SimpleInputProps> = ({
           fontFamily: "inherit",
           border: "none",
           borderStyle: "none",
-          fontWeight: 500,
+          fontWeight: 400,
 
           borderRadius: 10,
 

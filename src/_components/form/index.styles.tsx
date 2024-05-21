@@ -13,7 +13,8 @@ export const root: CSSProperties = {
 };
 
 export const label: CSSProperties = {
-  fontSize: text.sm,
+  fontSize: text.p,
+  fontWeight: 300,
   color: colors.text2,
 };
 
@@ -23,8 +24,8 @@ export const message: CSSProperties = {
 };
 
 export const input: CSSProperties = {
-  backgroundColor: colors.surface,
-  color: colors.onSurface,
+  backgroundColor: colors.primaryContainer,
+  color: colors.onPrimaryContainer,
   padding: space.xs,
   borderWidth: 0,
   borderColor: "transparent",
@@ -34,7 +35,7 @@ export const input: CSSProperties = {
   width: "100%",
 
   fontFamily: "inherit",
-  fontSize: text.sm,
+  fontSize: text.p,
   fontWeight: 400,
 };
 

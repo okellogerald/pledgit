@@ -1,0 +1,12 @@
+.title {
+    padding-bottom: var(--space-md);
+    text-align: center;
+}
+
+.form {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius2);
+    padding: var(--space-md);
+
+    min-width: 400px;
+}

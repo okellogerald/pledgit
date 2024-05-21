@@ -14,9 +14,6 @@ import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
 import { campaignEditFormValuesStore } from "../campaign_edit/store";
 
 import cardStyles from "./styles.module.css";
-import colors from "@/_themes/colors/colors";
-
-const cardColor = "#f6f6f6";
 
 async function fetchCampaigns(): Promise<Campaign[] | undefined> {
   try {
@@ -31,7 +28,9 @@ export function CampaignsCard() {
     status: "initial",
   });
 
-  useEffect(() => { fetchData() }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchData = () => trackPromise(fetchCampaigns(), setData);
 
@@ -44,7 +43,7 @@ export function CampaignsCard() {
 
 function LoadingView(_msg?: string) {
   return (
-    <div className={styles.card} style={{ backgroundColor: cardColor }}>
+    <div className={styles.card}>
       <LoadingIndicator />
       <VSpace />
       <p>Loading...</p>
@@ -54,7 +53,7 @@ function LoadingView(_msg?: string) {
 
 const ErrorView = (tryAgainFN: () => void) => {
   return (
-    <div className={styles.card} style={{ backgroundColor: cardColor }}>
+    <div className={styles.card}>
       <p>
         We faced a problem trying to fetch your campaigns. Please try again.
       </p>
@@ -65,22 +64,21 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Campaign[]) => {
-
   function addCampaign() {
     router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
   }
 
   const editCampaign = (campaign: Campaign) => {
-    campaignEditFormValuesStore.getState().setStartValue(campaign)
+    campaignEditFormValuesStore.getState().setStartValue(campaign);
     router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
-  }
+  };
 
   function seeCampaigns() {
     router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
   }
 
   return (
-    <div className={styles.card} style={{ backgroundColor: cardColor }}>
+    <div className={styles.card}>
       <div
         style={{
           display: "flex",
@@ -90,7 +88,7 @@ const DataView = (data: Campaign[]) => {
           alignItems: "center",
         }}
       >
-        <h5>Campaigns</h5>
+        <h6 className={cardStyles.title}>Campaigns</h6>
         <div>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
@@ -100,7 +98,7 @@ const DataView = (data: Campaign[]) => {
       <VSpace space={20} />
       <table className={cardStyles.table}>
         <thead>
-          <tr>
+          <tr className={cardStyles.tr}>
             <th className={cardStyles.th}>Name</th>
             <th className={cardStyles.th}>Start Date</th>
             <th className={cardStyles.th}>End Date</th>
@@ -110,12 +108,20 @@ const DataView = (data: Campaign[]) => {
           {data.map((campaign) => {
             return (
               <tr key={campaign.id} onClick={() => editCampaign(campaign)}>
-                <td>
-                  <p className={cardStyles.campaign_name} /* style={{color: colors.text2}} */>{campaign.name}</p>
-                  {campaign.description && <p className={cardStyles.td}>{campaign.description}</p>}
+                <td className={cardStyles.td}>
+                  <p className={cardStyles.campaign_name}>{campaign.name}</p>
+                  {campaign.description && (
+                    <p className={cardStyles.campaign_desc}>
+                      {campaign.description}
+                    </p>
+                  )}
                 </td>
-                <td className={cardStyles.td}>{formatDate(campaign.startDate)}</td>
-                <td className={cardStyles.td}>{formatDate(campaign.endDate)}</td>
+                <td className={cardStyles.td}>
+                  {formatDate(campaign.startDate, { format: "DD/MM/yyyy" })}
+                </td>
+                <td className={cardStyles.td}>
+                  {formatDate(campaign.endDate, { format: "DD/MM/yyyy" })}
+                </td>
               </tr>
             );
           })}

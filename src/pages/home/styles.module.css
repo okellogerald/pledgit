@@ -5,7 +5,7 @@
     background-color: var(--color-background);
     color: var(--color-text);
 
-    padding: var(--space-sm)
+    padding: var(--space-sm);
 }
 
 .body {
@@ -16,10 +16,12 @@
 }
 
 .card {
-    height: 300px;
+    min-height: 300px;
     width: "100%";
     border-radius: 20px;
     padding: var(--space-sm);
+
+    background-color: #f6f6f6;
     color: var(--color-text);
 
     display: "flex";

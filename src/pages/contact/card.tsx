@@ -1,11 +1,11 @@
-import styles from "@/pages/home/styles.module.css"
-
-const cardColor = "#f5f6ef"
+import styles from "@/pages/home/styles.module.css";
 
 export function ContactsCard() {
-    return <>
-        <div className={styles.card} style={{ backgroundColor: cardColor }}>
-            <h5>Contacts Card</h5>
-        </div>
+  return (
+    <>
+      <div className={styles.card}>
+        <h5>Contacts Card</h5>
+      </div>
     </>
+  );
 }
