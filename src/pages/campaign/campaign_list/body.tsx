@@ -7,6 +7,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { useStore } from "zustand";
 import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
 
+import styles from "./_styles.module.css";
+
 export function CampaignListPageBody() {
   const cmpgns = useStore(campaignsStateStore).campaigns;
 
@@ -37,24 +39,27 @@ export function CampaignListPageBody() {
       cell(props) {
         return <p>{formatDate(props.row.original.endDate)}</p>;
       },
-    }
+    },
   ];
 
   const onRowClick = (campaign: Campaign) => {
     router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
-  }
+  };
 
   return (
     <>
-      {cmpgns.length > 0 && (
-        <div>
-          <Table
-            data={cmpgns}
-            columns={columns}
-            onRowClick={(r) => onRowClick(r)}
-          />
-        </div>
-      )}
+      <div className={styles.body}>
+        <h4>Campaigns</h4>
+        {cmpgns.length > 0 && (
+          <div className={styles.table}>
+            <Table
+              data={cmpgns}
+              columns={columns}
+              onRowClick={(r) => onRowClick(r)}
+            />
+          </div>
+        )}
+      </div>
     </>
   );
 }

@@ -99,9 +99,9 @@ const DataView = (data: Campaign[]) => {
       <table className={cardStyles.table}>
         <thead>
           <tr className={cardStyles.tr}>
-            <th className={cardStyles.th}>Name</th>
-            <th className={cardStyles.th}>Start Date</th>
-            <th className={cardStyles.th}>End Date</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
           </tr>
         </thead>
         <tbody>

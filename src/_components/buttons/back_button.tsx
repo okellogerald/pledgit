@@ -1,6 +1,7 @@
 import { IoArrowBackSharp } from "react-icons/io5";
 
 import styles from "./_styles.module.css";
+import classNames from "classnames";
 
 export const BackButton: React.FC<
   React.DetailedHTMLProps<
@@ -10,7 +11,7 @@ export const BackButton: React.FC<
 > = (props) => {
   return (
     <button
-      className={styles.transparent_button}
+      className={classNames(styles.transparent_button, styles.back_button)}
       onClick={() => history.back()}
       {...props}
     >

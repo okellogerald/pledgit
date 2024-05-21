@@ -16,7 +16,8 @@ export const tableHeaderRow: CSSProperties = {
   cursor: "auto",
   height: 60,
 
-  backgroundColor: colors.surface,
+  backgroundColor: colors.primaryContainer,
+  color: colors.onPrimaryContainer,
 };
 
 export const tableHeader: CSSProperties = {
@@ -24,15 +25,17 @@ export const tableHeader: CSSProperties = {
   minHeight: 20,
   textAlign: "start",
   fontWeight: 500,
-  fontSize: text.sm,
+  fontSize: text.p,
   color: colors.text,
 };
 
 export const tableDataRow: CSSProperties = {
   height: 60,
 
-  fontSize: text.sm,
+  fontSize: text.p,
   color: colors.text2,
+
+  fontWeight: 400,
 
   textAlign: "start",
 };
