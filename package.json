@@ -18,9 +18,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ag-grid-community/client-side-row-model": "^31.3.2",
+    "@ag-grid-community/core": "^31.3.2",
+    "@ag-grid-community/react": "^31.3.2",
+    "@ag-grid-community/styles": "^31.3.2",
     "@radix-ui/react-form": "^0.0.3",
-    "@tanstack/react-table": "^8.13.2",
     "@ts-rest/core": "^3.45.1",
+    "ag-grid-react": "^31.3.2",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "electron-squirrel-startup": "^1.0.0",
