@@ -7,12 +7,22 @@ export const contactInputSchema = z.object({
   reference: z.string().optional(),
 });
 
-export const contactSchema = z.object({
-  id: z.string(),
-  createdAt: z.string().date(),
-  updatedAt: z.string().date(),
-}).merge(contactInputSchema);
+export const contactSchema = z
+  .object({
+    id: z.string(),
+    createdAt: z.string().date(),
+    updatedAt: z.string().date(),
+  })
+  .merge(contactInputSchema);
 
 export type Contact = z.infer<typeof contactSchema>;
 
 export type ContactInput = z.infer<typeof contactSchema>;
+
+const contactEditInputSchema = z
+  .object({
+    contactId: z.string(),
+  })
+  .merge(contactInputSchema);
+
+export type ContactEditInput = z.infer<typeof contactEditInputSchema>;

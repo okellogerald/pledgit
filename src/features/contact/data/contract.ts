@@ -30,7 +30,7 @@ export const contract = c.router({
     method: "GET",
     path: "/",
     responses: {
-      200: z.array(contactSchema),
+      200: z.object({ results: z.array(contactSchema) }),
     },
   },
   getByID: {
