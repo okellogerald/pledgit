@@ -24,8 +24,8 @@ export const message: CSSProperties = {
 };
 
 export const input: CSSProperties = {
-  backgroundColor: colors.primaryContainer,
-  color: colors.onPrimaryContainer,
+  backgroundColor: colors.surface,
+  color: colors.onSurface,
   padding: space.xs,
   borderWidth: 0,
   borderColor: "transparent",

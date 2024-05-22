@@ -73,9 +73,7 @@ export default function CampaignEditPageBody() {
             placeholder="E.g Construction"
             value={formState.campaignName}
             onChange={formState.setCampaignName}
-          >
-            {" "}
-          </SimpleFormField>
+          ></SimpleFormField>
           <div style={{ width: "100%" }}>
             <Label lbl="Campaign Description" />
             <textarea

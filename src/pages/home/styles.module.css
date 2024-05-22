@@ -23,7 +23,7 @@
     border-radius: 20px;
     padding: var(--space-sm);
 
-    background-color: #f6f6f6;
+    background-color: var(--color-surface);
 
     display: flex;
     flex-direction: column;

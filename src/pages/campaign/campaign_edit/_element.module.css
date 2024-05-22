@@ -1,6 +1,6 @@
 .scaffold {
     width: 100vh;
-    height: 100vh;
+    height: 100vw;
 }
 
 .header {
@@ -16,12 +16,4 @@
     align-items: center;
 
     padding-top: var(--space-md);
-}
-
-.form {
-    background-color: var(--color-surface);
-    border-radius: var(--border-radius2);
-    padding: var(--space-md);
-
-    min-width: 400px;
 }

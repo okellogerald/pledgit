@@ -1,8 +1,7 @@
 :root {
-    --color-primary: #1a3732;
-    /*   --color-primary: 	#120A8F; */
+    --color-primary: #120a8f;
     --color-onPrimary: #ffffff;
-    --color-primaryContainer: #f1f3ef;
+    --color-primaryContainer: #e7e7f4;
     --color-onPrimaryContainer: #555555;
     --color-primaryShade: #ece7fe;
     --color-primaryShade2: #f4f1fe;
@@ -10,7 +9,7 @@
     --color-onAccent: #000000;
     --color-accentContainer: #343434;
     --color-onAccentContainer: #ffffff;
-    --color-surface: #fbfcfb;
+    --color-surface: #f3f3f9;
     --color-onSurface: #474747;
     --color-onSurfaceContainer: #333;
     --color-disabled: #dcdcdc;

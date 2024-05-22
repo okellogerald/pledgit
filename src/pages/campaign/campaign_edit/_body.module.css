@@ -4,7 +4,6 @@
 }
 
 .form {
-    background-color: var(--color-surface);
     border-radius: var(--border-radius2);
     padding: var(--space-md);
 

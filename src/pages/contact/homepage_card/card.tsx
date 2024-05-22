@@ -57,7 +57,6 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Contact[]) => {
-  console.log(data);
   function addCampaign() {
     // router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
   }

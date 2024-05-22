@@ -146,8 +146,8 @@ export const SimpleInput: React.FC<SimpleInputProps> = ({
     alignItems: "center",
     justifyContent: "space-between",
 
-    backgroundColor: props.style?.backgroundColor ?? colors.primaryContainer,
-    color: colors.onPrimaryContainer,
+    backgroundColor: props.style?.backgroundColor ?? colors.surface,
+    color: colors.onSurface,
 
     margin: 0,
     padding: 0,
