@@ -13,9 +13,9 @@
 
 html,
 body {
-  width: "100%";
+  width: 100%;
+  color: var(--color-text2);
   background-color: var(--color-background);
-  /* color: var(--color-text); */
 }
 
 h1 {
@@ -46,18 +46,8 @@ p {
   font-size: var(--text-p);
 }
 
-tr {
-  cursor: pointer;
-}
-
-strong {
-  font-weight: 500;
-  color: "#6D759D";
-
-  font-size: small;
-}
-
 a,
+tr,
 button {
   cursor: pointer;
 }

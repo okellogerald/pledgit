@@ -89,7 +89,7 @@ const DataView = (data: Campaign[]) => {
         }}
       >
         <h6 className={cardStyles.title}>Campaigns</h6>
-        <div>
+        <div style={{ display: "flex" }}>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
           <OutlineButton label="See All" onClick={seeCampaigns} />

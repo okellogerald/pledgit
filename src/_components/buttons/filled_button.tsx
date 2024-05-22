@@ -4,6 +4,7 @@ import { AsyncState, matchAsyncState } from "../../utils/promise";
 
 import styles from "./_styles.module.css";
 import colors from "@/_themes/colors/colors";
+import classNames from "classnames";
 
 interface Props
   extends React.DetailedHTMLProps<
@@ -24,30 +25,28 @@ export const FilledButton: React.FC<Props> = ({
   showLoading,
   ...props
 }: Props) => {
-  const _style = {
+  const extra = {
     width: fillWidth ? "100%" : undefined,
 
     ...props.style,
 
     backgroundColor: disabled
-      ? colors.text3
+      ? colors.disabled
       : props.style?.backgroundColor ?? colors.primary,
     color: disabled
       ? colors.onDisabled
       : props.style?.color ?? colors.onPrimary,
-
-    borderStyle: "none",
   };
 
   return (
     <button
-      className={styles.button}
+      className={classNames(styles.button, styles.filled_button)}
       {...props}
-      style={_style}
+      style={extra}
       disabled={disabled}
       onClick={onClick}
     >
-      {showLoading && <LoadingIndicator color={_style.color} />}
+      {showLoading && <LoadingIndicator color={extra.color} />}
       {!showLoading && label && (
         <p style={{ margin: 0, padding: 0 }}>{label}</p>
       )}

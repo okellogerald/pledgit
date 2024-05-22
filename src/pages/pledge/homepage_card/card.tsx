@@ -49,7 +49,7 @@ function LoadingView(_msg?: string) {
 const ErrorView = (tryAgainFN: () => void) => {
   return (
     <div className={styles.card}>
-      <p>We faced a problem trying to fetch your contacts. Please try again.</p>
+      <p>We faced a problem trying to fetch your pledges. Please try again.</p>
       <VSpace />
       <OutlineButton label="Try Again" onClick={tryAgainFN} />
     </div>
@@ -82,16 +82,16 @@ const DataView = (data: Pledge[]) => {
         }}
       >
         <h6 className={cardStyles.title}>Pledges</h6>
-        <div>
+        <div style={{ display: "flex" }}>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
           <OutlineButton label="See All" onClick={seeCampaigns} />
         </div>
       </div>
       <VSpace space={20} />
-      <table className={cardStyles.table}>
+      <table>
         <thead>
-          <tr className={cardStyles.tr}>
+          <tr>
             <th>Pledger Name</th>
             <th>Campaign</th>
             <th>Amount</th>
@@ -101,11 +101,11 @@ const DataView = (data: Pledge[]) => {
           {data.map((e) => {
             return (
               <tr key={e.id} onClick={() => editCampaign(e)}>
-                <td className={cardStyles.td}>
-                  {e.contact.firstName} {e.contact.lastName}
+                <td>
+                  {e.contact.firstName} {e.contact.lastName}{" "}
                 </td>
-                <td className={cardStyles.td}>{e.campaign.name}</td>
-                <td className={cardStyles.td}> {formatTZAmount(e.amount)}</td>
+                <td>{e.campaign.name}</td>
+                <td> {formatTZAmount(e.amount)}</td>
               </tr>
             );
           })}

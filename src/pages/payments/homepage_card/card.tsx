@@ -49,7 +49,7 @@ function LoadingView(_msg?: string) {
 const ErrorView = (tryAgainFN: () => void) => {
   return (
     <div className={styles.card}>
-      <p>We faced a problem trying to fetch your contacts. Please try again.</p>
+      <p>We faced a problem trying to fetch your payments. Please try again.</p>
       <VSpace />
       <OutlineButton label="Try Again" onClick={tryAgainFN} />
     </div>
@@ -82,7 +82,7 @@ const DataView = (data: Payment[]) => {
         }}
       >
         <h6 className={cardStyles.title}>Payments</h6>
-        <div>
+        <div style={{ display: "flex" }}>
           <OutlineButton label="Add New" onClick={addCampaign} />
           <HSpace />
           <OutlineButton label="See All" onClick={seeCampaigns} />

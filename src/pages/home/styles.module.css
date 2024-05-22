@@ -1,6 +1,6 @@
 .scaffold {
-    height: "100vh";
-    width: "100vh";
+    height: 100vh;
+    width: 100vw;
 
     background-color: var(--color-background);
     color: var(--color-text);
@@ -13,18 +13,84 @@
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
     gap: var(--space-sm);
+
+    padding-bottom: var(--space-sm);
 }
 
 .card {
     min-height: 300px;
-    width: "100%";
+    width: 100%;
     border-radius: 20px;
     padding: var(--space-sm);
 
     background-color: #f6f6f6;
-    color: var(--color-text);
 
-    display: "flex";
-    align-items: "center";
-    justify-content: "center";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Default Card Table Styles */
+
+table {
+    width: 100%;
+
+    color: var(--color-text2);
+
+    border-spacing: var(--space-xs);
+    border-collapse: collapse;
+}
+
+th {
+    color: var(--color-text3);
+    text-align: start;
+
+    font-weight: 400;
+    font-size: var(--text-p);
+
+    padding: var(--space-xs);
+}
+
+td {
+    text-align: start;
+
+    font-weight: 300;
+    font-size: var(--text-p);
+
+    padding: var(--space-xs);
+
+    border: solid 1.5px #dcdcdc;
+    border-style: none;
+}
+
+tbody tr {
+    background-color: #fff;
+    border-radius: var(--border-radius3);
+}
+
+tr {
+    border-radius: var(--border-radius3);
+}
+
+tr:first-child td:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+tr:first-child td:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius);
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
+}
+
+tr td {
+    border-bottom-style: solid;
+}
+tr:last-child td {
+    border-bottom-style: none;
 }

@@ -11,7 +11,7 @@ export const BackButton: React.FC<
 > = (props) => {
   return (
     <button
-      className={classNames(styles.transparent_button, styles.back_button)}
+      className={classNames(styles.button, styles.transparent_button, styles.back_button)}
       onClick={() => history.back()}
       {...props}
     >
