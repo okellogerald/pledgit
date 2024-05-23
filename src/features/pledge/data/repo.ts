@@ -11,7 +11,7 @@ const client = initClient(contract, {
 });
 
 export class PledgeRepo {
-  async createNew(data: PledgeInput): Promise<Pledge> {
+  async createNew(data: PledgeInput): Promise<PledgeInput> {
     const result = await client.create({ body: data });
     if (result.status === 201) {
       return result.body;
@@ -33,7 +33,7 @@ export class PledgeRepo {
     );
   }
 
-  async edit(data: PledgeEditInput): Promise<Pledge> {
+  async edit(data: PledgeEditInput): Promise<PledgeInput> {
     const { pledgeId, ...rest } = data;
 
     const result = await client.update({

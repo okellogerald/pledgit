@@ -19,7 +19,7 @@ import {
 import { FilledButton } from "@/_components/buttons/filled_button";
 import { formatAmount, goToDashboard } from "@/utils/utils";
 import { PledgesManager } from "@/features/pledge/manager";
-import { Pledge } from "@/models/pledge";
+import { Pledge, PledgeInput } from "@/models/pledge";
 import PledgitSelect from "@/_components/select";
 import { contactsStateStore } from "@/features/contact/store";
 import { campaignsStateStore } from "@/features/campaign/store";
@@ -42,7 +42,7 @@ export default function PledgeAddPageLoaderBody() {
   const contacts = useStore(contactsStateStore).contacts;
   const campaigns = useStore(campaignsStateStore).campaigns;
 
-  const [data, setData] = useState<AsyncState<Pledge | undefined>>({
+  const [data, setData] = useState<AsyncState<PledgeInput | undefined>>({
     status: "initial",
   });
   const loading = isLoading(data);

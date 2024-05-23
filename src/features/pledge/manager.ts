@@ -23,11 +23,11 @@ export class PledgesManager {
     return list;
   }
 
-  async add(data: PledgeInput): Promise<Pledge> {
+  async add(data: PledgeInput): Promise<PledgeInput> {
     return await this.repo.createNew(data);
   }
 
-  async edit(data: PledgeEditInput): Promise<Pledge> {
+  async edit(data: PledgeEditInput): Promise<PledgeInput> {
     return await this.repo.edit(data);
   }
 }

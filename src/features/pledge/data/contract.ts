@@ -9,18 +9,18 @@ const constantQuery = "eager=[contact,campaign]";
 export const contract = c.router({
   create: {
     method: "POST",
-    path: `?${constantQuery}`,
+    path: "/",
     body: pledgeInputSchema,
     responses: {
-      201: pledgeSchema,
+      201: pledgeInputSchema,
     },
   },
   update: {
     method: "PATCH",
-    path: `/:id?${constantQuery}`,
+    path: `/:id`,
     body: pledgeInputSchema,
     responses: {
-      200: pledgeSchema,
+      200: pledgeInputSchema,
     },
   },
   getAll: {
@@ -32,7 +32,7 @@ export const contract = c.router({
   },
   getByID: {
     method: "GET",
-    path: `/:id?${constantQuery}`,
+    path: `/:id/?${constantQuery}`,
     responses: {
       200: pledgeSchema,
     },
