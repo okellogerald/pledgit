@@ -17,7 +17,7 @@ export const contactSchema = z
 
 export type Contact = z.infer<typeof contactSchema>;
 
-export type ContactInput = z.infer<typeof contactSchema>;
+export type ContactInput = z.infer<typeof contactInputSchema>;
 
 const contactEditInputSchema = z
   .object({

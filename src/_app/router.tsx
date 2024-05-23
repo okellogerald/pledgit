@@ -16,7 +16,12 @@ import {
   PLEDGE_ADD_PAGE_ROUTE_NAME,
   PledgeAddPage,
   PledgeAddPageLoader,
-} from "@/pages/pledge/pledge.add/element";
+} from "@/pages/pledge/pledge_add/element";
+import {
+  CONTACT_ADD_PAGE_ROUTE_NAME,
+  ContactAddPage,
+  ContactAddPageLoader,
+} from "@/pages/contact/contact_add/element";
 
 export const router = createHashRouter([
   {
@@ -40,5 +45,10 @@ export const router = createHashRouter([
     path: PLEDGE_ADD_PAGE_ROUTE_NAME,
     loader: PledgeAddPageLoader,
     element: <PledgeAddPage />,
+  },
+  {
+    path: CONTACT_ADD_PAGE_ROUTE_NAME,
+    loader: ContactAddPageLoader,
+    element: <ContactAddPage />,
   },
 ]);

@@ -10,8 +10,7 @@ import { Pledge } from "@/models/pledge";
 import { PledgesManager } from "@/features/pledge/manager";
 import { formatTZAmount } from "@/utils/formatters";
 import { router } from "@/_app/router";
-import { Payment } from "electron";
-import { PLEDGE_ADD_PAGE_ROUTE_NAME } from "../pledge.add/element";
+import { PLEDGE_ADD_PAGE_ROUTE_NAME } from "../pledge_add/element";
 
 async function fetchPledges(): Promise<Pledge[] | undefined> {
   try {

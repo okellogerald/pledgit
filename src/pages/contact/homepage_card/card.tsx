@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import cardStyles from "./styles.module.css";
 import { Contact } from "@/models/contact";
 import { ContactManager } from "@/features/contact/manager";
+import { CONTACT_ADD_PAGE_ROUTE_NAME } from "../contact_add/element";
+import { router } from "@/_app/router";
 
 async function fetchContacts(): Promise<Contact[] | undefined> {
   try {
@@ -57,16 +59,16 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Contact[]) => {
-  function addCampaign() {
-    // router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
+  function addContact() {
+    router.navigate(CONTACT_ADD_PAGE_ROUTE_NAME);
   }
 
-  const editCampaign = (contact: Contact) => {
+  const editContact = (contact: Contact) => {
     // campaignEditFormValuesStore.getState().setStartValue(campaign);
     //router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
   };
 
-  function seeCampaigns() {
+  function seeContacts() {
     //router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
   }
 
@@ -83,9 +85,9 @@ const DataView = (data: Contact[]) => {
       >
         <h6 className={cardStyles.title}>Contacts</h6>
         <div style={{ display: "flex" }}>
-          <OutlineButton label="Add New" onClick={addCampaign} />
+          <OutlineButton label="Add New" onClick={addContact} />
           <HSpace />
-          <OutlineButton label="See All" onClick={seeCampaigns} />
+          <OutlineButton label="See All" onClick={seeContacts} />
         </div>
       </div>
       <VSpace space={20} />
@@ -101,7 +103,7 @@ const DataView = (data: Contact[]) => {
         <tbody>
           {data.map((e) => {
             return (
-              <tr key={e.id} onClick={() => editCampaign(e)}>
+              <tr key={e.id} onClick={() => editContact(e)}>
                 <td className={cardStyles.td}>{e.firstName}</td>
                 <td className={cardStyles.td}>{e.lastName}</td>
                 <td className={cardStyles.td}>{e.phone}</td>
