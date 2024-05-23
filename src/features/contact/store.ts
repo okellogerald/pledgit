@@ -9,6 +9,8 @@ export interface ContactsState {
   contacts: Contact[];
   setContacts: (list: Contact[]) => void;
   refresh: () => void;
+
+  getById: (id: string) => Contact | undefined;
 }
 
 export const contactsStateStore = createStore<ContactsState, any>(
@@ -22,6 +24,10 @@ export const contactsStateStore = createStore<ContactsState, any>(
 
       refresh() {
         set({ contacts: [] });
+      },
+
+      getById(id) {
+        return get().contacts.find((e) => e.id === id);
       },
     }),
     {

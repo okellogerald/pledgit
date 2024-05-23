@@ -1,7 +1,10 @@
-import { Campaign, CampaignInput } from "@/models/campaign";
-import { Contact } from "@/models/contact";
+import { PledgitSelectItem } from "@/_components/select";
+import { CampaignManager } from "@/features/campaign/manager";
+import { campaignsStateStore } from "@/features/campaign/store";
+import { ContactManager } from "@/features/contact/manager";
+import { contactsStateStore } from "@/features/contact/store";
+import { Campaign } from "@/models/campaign";
 import { PledgeInput } from "@/models/pledge";
-import { formatDate, parseDate } from "@/utils/formatters";
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -11,42 +14,54 @@ import {
 import { createStore } from "zustand";
 
 export interface PledgeAddFormState {
-  amount: string;
+  amount: number;
   notes: string;
-  cmpgn?: Campaign;
-  contact?: Contact;
+  campaignId: string;
+  contactId: string;
 
   setPledgeAmount: ChangeEventHandler<HTMLInputElement>;
   setPledgeNotes: FormEventHandler<HTMLTextAreaElement>;
 
-  setContact: (contact: Contact) => void;
-  setCampaign: (campaign: Campaign) => void;
+  setContact: (id: string) => void;
+  setCampaign: (id: string) => void;
 
   hasAllFieldsFilled: () => boolean;
   validate: () => boolean;
 
+  getContactSelectItem: () => PledgitSelectItem | undefined;
+  getCampaignSelectItem: () => PledgitSelectItem | undefined;
+
   getPledgeInput: () => PledgeInput;
 }
 
-export const campaignAddFormValuesStore = createStore<PledgeAddFormState>()(
+export const pledgeAddFormValuesStore = createStore<PledgeAddFormState>()(
   (set, get) => ({
-    amount: "",
+    amount: 0,
     notes: "",
-    cmpgn: undefined,
-    contact: undefined,
+    campaignId: "",
+    contactId: "",
 
     getPledgeInput() {
+      var notes: string | undefined = get().notes.trim();
+      if (notes.length === 0) {
+        notes = undefined;
+      }
+
       const data: PledgeInput = {
-        amount: Number.parseFloat(get().amount),
-        notes: get().notes,
-        campaignId: get().cmpgn!.id,
-        contactId: get().contact!.id,
+        amount: get().amount,
+        notes: notes,
+        campaignId: get().campaignId,
+        contactId: get().contactId,
       };
       return data;
     },
 
     hasAllFieldsFilled: () => {
-      return false;
+      return (
+        get().amount !== 0 &&
+        get().campaignId.trim().length !== 0 &&
+        get().contactId.trim().length !== 0
+      );
     },
 
     validate: () => {
@@ -62,21 +77,49 @@ export const campaignAddFormValuesStore = createStore<PledgeAddFormState>()(
     },
 
     setPledgeAmount(e: ChangeEvent) {
-      set({ amount: (e.target as any).value });
+      let value = (e.target as any).value;
+      value = value.replace(/[^0-9]/g, "");
+      if (value.trim().length === 0) {
+        value = "0";
+      }
+
+      let amount = 0;
+      try {
+        amount = parseInt(value);
+      } catch (_) {}
+
+      set({ amount });
     },
     setPledgeNotes(e: FormEvent) {
       set({ notes: (e.target as any).value });
     },
 
     setCampaign(cmpgn) {
-      set({ cmpgn });
+      set({ campaignId: cmpgn });
     },
     setContact(contact) {
-      set({ contact });
+      set({ contactId: contact });
+    },
+
+    getContactSelectItem() {
+      const contact = contactsStateStore.getState().getById(get().contactId);
+      if (!contact) return undefined;
+
+      const item: PledgitSelectItem = {
+        id: contact.id,
+        label: contact.firstName + " " + contact.lastName,
+      };
+      return item;
+    },
+    getCampaignSelectItem() {
+      const contact = campaignsStateStore.getState().getById(get().campaignId);
+      if (!contact) return undefined;
+
+      const item: PledgitSelectItem = {
+        id: contact.id,
+        label: contact.name,
+      };
+      return item;
     },
   }),
 );
-
-function _formatDate(date: moment.MomentInput) {
-  return formatDate(date, { format: "YYYY-MM-DD" });
-}

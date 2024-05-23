@@ -9,6 +9,8 @@ export interface CampaignsState {
   campaigns: Campaign[];
   setCampaigns: (campaigns: Campaign[]) => void;
   refresh: () => void;
+
+  getById: (id: string) => Campaign | undefined;
 }
 
 export const campaignsStateStore = createStore<CampaignsState, any>(
@@ -22,6 +24,10 @@ export const campaignsStateStore = createStore<CampaignsState, any>(
 
       refresh() {
         set({ campaigns: [] });
+      },
+
+      getById(id) {
+        return get().campaigns.find((e) => e.id === id);
       },
     }),
     {

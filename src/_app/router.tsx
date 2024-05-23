@@ -7,7 +7,16 @@ import {
   CAMPAIGN_LIST_PAGE_ROUTE_NAME,
   CampaignListPage,
 } from "@/pages/campaign/campaign_list/element";
-import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME, CampaignEditPage, CampaignEditPageLoader } from "@/pages/campaign/campaign_edit/element";
+import {
+  CAMPAIGN_EDIT_PAGE_ROUTE_NAME,
+  CampaignEditPage,
+  CampaignEditPageLoader,
+} from "@/pages/campaign/campaign_edit/element";
+import {
+  PLEDGE_ADD_PAGE_ROUTE_NAME,
+  PledgeAddPage,
+  PledgeAddPageLoader,
+} from "@/pages/pledge/pledge.add/element";
 
 export const router = createHashRouter([
   {
@@ -26,5 +35,10 @@ export const router = createHashRouter([
   {
     path: CAMPAIGN_LIST_PAGE_ROUTE_NAME,
     element: <CampaignListPage />,
+  },
+  {
+    path: PLEDGE_ADD_PAGE_ROUTE_NAME,
+    loader: PledgeAddPageLoader,
+    element: <PledgeAddPage />,
   },
 ]);

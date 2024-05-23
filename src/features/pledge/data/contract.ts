@@ -4,10 +4,12 @@ import { pledgeInputSchema, pledgeSchema } from "../../../models/pledge";
 
 const c = initContract();
 
+const constantQuery = "eager=[contact,campaign]";
+
 export const contract = c.router({
   create: {
     method: "POST",
-    path: "/",
+    path: `?${constantQuery}`,
     body: pledgeInputSchema,
     responses: {
       201: pledgeSchema,
@@ -15,7 +17,7 @@ export const contract = c.router({
   },
   update: {
     method: "PATCH",
-    path: "/:id",
+    path: `/:id?${constantQuery}`,
     body: pledgeInputSchema,
     responses: {
       200: pledgeSchema,
@@ -23,14 +25,14 @@ export const contract = c.router({
   },
   getAll: {
     method: "GET",
-    path: "/?eager=[contact,campaign]",
+    path: `?${constantQuery}`,
     responses: {
       200: z.object({ results: z.array(pledgeSchema) }),
     },
   },
   getByID: {
     method: "GET",
-    path: "/:id",
+    path: `/:id?${constantQuery}`,
     responses: {
       200: pledgeSchema,
     },

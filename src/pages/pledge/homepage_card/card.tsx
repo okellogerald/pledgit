@@ -9,6 +9,9 @@ import cardStyles from "./styles.module.css";
 import { Pledge } from "@/models/pledge";
 import { PledgesManager } from "@/features/pledge/manager";
 import { formatTZAmount } from "@/utils/formatters";
+import { router } from "@/_app/router";
+import { Payment } from "electron";
+import { PLEDGE_ADD_PAGE_ROUTE_NAME } from "../pledge.add/element";
 
 async function fetchPledges(): Promise<Pledge[] | undefined> {
   try {
@@ -57,16 +60,16 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Pledge[]) => {
-  function addCampaign() {
-    // router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
+  function addPledge() {
+    router.navigate(PLEDGE_ADD_PAGE_ROUTE_NAME);
   }
 
-  const editCampaign = (pledge: Pledge) => {
+  const editPledge = (e: Pledge) => {
     // campaignEditFormValuesStore.getState().setStartValue(campaign);
     //router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
   };
 
-  function seeCampaigns() {
+  function seeList() {
     //router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
   }
 
@@ -83,9 +86,9 @@ const DataView = (data: Pledge[]) => {
       >
         <h6 className={cardStyles.title}>Pledges</h6>
         <div style={{ display: "flex" }}>
-          <OutlineButton label="Add New" onClick={addCampaign} />
+          <OutlineButton label="Add New" onClick={addPledge} />
           <HSpace />
-          <OutlineButton label="See All" onClick={seeCampaigns} />
+          <OutlineButton label="See All" onClick={seeList} />
         </div>
       </div>
       <VSpace space={20} />
@@ -100,7 +103,7 @@ const DataView = (data: Pledge[]) => {
         <tbody>
           {data.map((e) => {
             return (
-              <tr key={e.id} onClick={() => editCampaign(e)}>
+              <tr key={e.id} onClick={() => editPledge(e)}>
                 <td>
                   {e.contact.firstName} {e.contact.lastName}{" "}
                 </td>

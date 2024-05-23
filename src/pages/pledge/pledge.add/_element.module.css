@@ -17,10 +17,3 @@
 
     padding-top: var(--space-md);
 }
-
-.form {
-    border-radius: var(--border-radius2);
-    padding: var(--space-md);
-
-    min-width: 400px;
-}
