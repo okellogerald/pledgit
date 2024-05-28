@@ -12,6 +12,9 @@ export const campaignSchema = z
     id: z.string(),
     createdAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
+    pledgedAmount: z.number(),
+    paidAmount: z.number(),
+    unpaidAmount: z.number(),
   })
   .merge(campaignInputSchema);
 

@@ -9,6 +9,8 @@ import cardStyles from "./styles.module.css";
 import { Payment } from "@/models/payment";
 import { PaymentsManager } from "@/features/payment/manager";
 import { formatTZAmount } from "@/utils/formatters";
+import { PAYMENTS_ADD_PAGE_ROUTE_NAME } from "../payment_add/element";
+import { router } from "@/_app/router";
 
 async function fetchPayments(): Promise<Payment[] | undefined> {
   try {
@@ -58,7 +60,7 @@ const ErrorView = (tryAgainFN: () => void) => {
 
 const DataView = (data: Payment[]) => {
   function addCampaign() {
-    // router.navigate(CAMPAIGN_ADD_PAGE_ROUTE_NAME);
+     router.navigate(PAYMENTS_ADD_PAGE_ROUTE_NAME);
   }
 
   const editCampaign = (payment: Payment) => {

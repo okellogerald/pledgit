@@ -22,6 +22,7 @@ import {
   ContactAddPage,
   ContactAddPageLoader,
 } from "@/pages/contact/contact_add/element";
+import { PAYMENTS_ADD_PAGE_ROUTE_NAME, PaymentAddPage, PaymentAddPageLoader } from "@/pages/payments/payment_add/element";
 
 export const router = createHashRouter([
   {
@@ -50,5 +51,10 @@ export const router = createHashRouter([
     path: CONTACT_ADD_PAGE_ROUTE_NAME,
     loader: ContactAddPageLoader,
     element: <ContactAddPage />,
+  },
+  {
+    path: PAYMENTS_ADD_PAGE_ROUTE_NAME,
+    loader: PaymentAddPageLoader,
+    element: <PaymentAddPage />,
   },
 ]);

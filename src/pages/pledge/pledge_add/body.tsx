@@ -1,9 +1,6 @@
 import { FormRoot } from "@/_components/form";
 import { input, label } from "@/_components/form/index.styles";
-import {
-  FormFieldInputWithSuffix,
-  SimpleFormField,
-} from "@/_components/form/simple_components";
+import {FormFieldInputWithSuffix} from "@/_components/form/simple_components";
 
 import styles from "./_body.module.css";
 import { VSpace } from "@/_components/space";
@@ -19,7 +16,7 @@ import {
 import { FilledButton } from "@/_components/buttons/filled_button";
 import { formatAmount, goToDashboard } from "@/utils/utils";
 import { PledgesManager } from "@/features/pledge/manager";
-import { Pledge, PledgeInput } from "@/models/pledge";
+import { PledgeInput } from "@/models/pledge";
 import PledgitSelect from "@/_components/select";
 import { contactsStateStore } from "@/features/contact/store";
 import { campaignsStateStore } from "@/features/campaign/store";

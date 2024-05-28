@@ -14,6 +14,7 @@ import { CAMPAIGN_EDIT_PAGE_ROUTE_NAME } from "../campaign_edit/element";
 import { campaignEditFormValuesStore } from "../campaign_edit/store";
 
 import cardStyles from "./styles.module.css";
+import { formatAmount } from "@/utils/utils";
 
 async function fetchCampaigns(): Promise<Campaign[] | undefined> {
   try {
@@ -100,8 +101,8 @@ const DataView = (data: Campaign[]) => {
         <thead>
           <tr className={cardStyles.tr}>
             <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Paid Amount</th>
+            <th>Pledged Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -117,10 +118,10 @@ const DataView = (data: Campaign[]) => {
                   )}
                 </td>
                 <td className={cardStyles.td}>
-                  {formatDate(campaign.startDate, { format: "DD/MM/yyyy" })}
+                  {formatAmount(campaign.paidAmount)}
                 </td>
                 <td className={cardStyles.td}>
-                  {formatDate(campaign.endDate, { format: "DD/MM/yyyy" })}
+                  {formatAmount(campaign.pledgedAmount)}
                 </td>
               </tr>
             );

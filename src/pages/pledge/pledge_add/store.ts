@@ -1,9 +1,6 @@
 import { PledgitSelectItem } from "@/_components/select";
-import { CampaignManager } from "@/features/campaign/manager";
 import { campaignsStateStore } from "@/features/campaign/store";
-import { ContactManager } from "@/features/contact/manager";
 import { contactsStateStore } from "@/features/contact/store";
-import { Campaign } from "@/models/campaign";
 import { PledgeInput } from "@/models/pledge";
 import {
   ChangeEvent,

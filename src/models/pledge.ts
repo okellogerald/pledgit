@@ -15,6 +15,9 @@ export const pledgeSchema = z
     number: z.string(),
     createdAt: z.string().date(),
     updatedAt: z.string().date(),
+    amount: z.number(),
+    paidAmount: z.number(),
+    unpaidAmount: z.number(),
     contact: contactSchema,
     campaign: campaignSchema,
   })

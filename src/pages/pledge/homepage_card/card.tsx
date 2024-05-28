@@ -96,7 +96,8 @@ const DataView = (data: Pledge[]) => {
           <tr>
             <th>Pledger Name</th>
             <th>Campaign</th>
-            <th>Amount</th>
+            <th>Paid Amount</th>
+            <th>Pledged Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +108,8 @@ const DataView = (data: Pledge[]) => {
                   {e.contact.firstName} {e.contact.lastName}{" "}
                 </td>
                 <td>{e.campaign.name}</td>
-                <td> {formatTZAmount(e.amount)}</td>
+                <td> {formatTZAmount(e.paidAmount)}</td>
+                <td> {formatTZAmount(e.amount)}</td> 
               </tr>
             );
           })}

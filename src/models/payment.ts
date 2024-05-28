@@ -3,9 +3,18 @@ import { contactSchema } from "./contact";
 import { pledgeSchema } from "./pledge";
 import { campaignSchema } from "./campaign";
 
+
+export const PaymentMethods = ["Cash", "Card", "Mobile", "Bank", "Other"] as const;
+const paymentMethodEnum = z.enum(PaymentMethods);
+export type PaymentMethod = typeof PaymentMethods[number];
+
 export const paymentInputSchema = z.object({
   amount: z.number(),
+  pledgeId: z.string(),
+  date: z.string().date(),
+  reference: z.string().optional(),
   notes: z.string().optional(),
+  method: paymentMethodEnum,
 });
 
 export const paymentSchema = z.object({
