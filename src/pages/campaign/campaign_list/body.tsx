@@ -1,7 +1,7 @@
 import Table from "@/_components/table";
 import { campaignsStateStore } from "@/features/campaign/store";
 import { Campaign } from "@/models/campaign";
-import { formatDate } from "@/utils/formatters";
+import { formatDate, formatTZAmount } from "@/utils/formatters";
 import { useStore } from "zustand";
 
 import styles from "./_styles.module.css";
@@ -14,17 +14,19 @@ export function CampaignListPageBody() {
     { field: "name" },
     { field: "description" },
     {
-      field: "startDate",
+      headerName: "Start Date - End Date",
       valueFormatter: (params: ValueFormatterParams<Campaign, Date>) => {
-        return formatDate(params.value, { format: "DD/MM/yyyy" });
+        return `${formatDate(params.value, { format: "DD/MM/yyyy" })} - ${formatDate(params.value, { format: "DD/MM/yyyy" })}`;
       },
     },
     {
-      field: "endDate",
-      valueFormatter: (params: ValueFormatterParams<Campaign, Date>) => {
-        return formatDate(params.value, { format: "DD/MM/yyyy" });
-      },
+      headerName: "Pledged Amount",
+      valueGetter: (e) => formatTZAmount(e.data?.pledgedAmount ?? 0),
     },
+    {
+      headerName: "Paid Amount",
+      valueGetter: (e) => formatTZAmount(e.data?.paidAmount ?? 0),
+    }
   ];
 
   return (

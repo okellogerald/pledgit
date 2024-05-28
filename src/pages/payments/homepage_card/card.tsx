@@ -11,6 +11,7 @@ import { PaymentsManager } from "@/features/payment/manager";
 import { formatTZAmount } from "@/utils/formatters";
 import { PAYMENTS_ADD_PAGE_ROUTE_NAME } from "../payment_add/element";
 import { router } from "@/_app/router";
+import { PAYMENT_LIST_PAGE_ROUTE_NAME } from "../payment_list/element";
 
 async function fetchPayments(): Promise<Payment[] | undefined> {
   try {
@@ -69,7 +70,7 @@ const DataView = (data: Payment[]) => {
   };
 
   function seeCampaigns() {
-    //router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
+    router.navigate(PAYMENT_LIST_PAGE_ROUTE_NAME);
   }
 
   return (

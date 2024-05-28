@@ -11,6 +11,7 @@ import { PledgesManager } from "@/features/pledge/manager";
 import { formatTZAmount } from "@/utils/formatters";
 import { router } from "@/_app/router";
 import { PLEDGE_ADD_PAGE_ROUTE_NAME } from "../pledge_add/element";
+import { PLEDGE_LIST_PAGE_ROUTE_NAME } from "../pledge_list/element";
 
 async function fetchPledges(): Promise<Pledge[] | undefined> {
   try {
@@ -69,7 +70,7 @@ const DataView = (data: Pledge[]) => {
   };
 
   function seeList() {
-    //router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
+    router.navigate(PLEDGE_LIST_PAGE_ROUTE_NAME);
   }
 
   return (

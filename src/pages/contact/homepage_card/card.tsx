@@ -11,6 +11,7 @@ import { Contact } from "@/models/contact";
 import { ContactManager } from "@/features/contact/manager";
 import { CONTACT_ADD_PAGE_ROUTE_NAME } from "../contact_add/element";
 import { router } from "@/_app/router";
+import { CONTACT_LIST_PAGE_ROUTE_NAME } from "../contact_list/element";
 
 async function fetchContacts(): Promise<Contact[] | undefined> {
   try {
@@ -69,7 +70,7 @@ const DataView = (data: Contact[]) => {
   };
 
   function seeContacts() {
-    //router.navigate(CAMPAIGN_LIST_PAGE_ROUTE_NAME);
+    router.navigate(CONTACT_LIST_PAGE_ROUTE_NAME);
   }
 
   return (
