@@ -12,6 +12,8 @@ import { ContactManager } from "@/features/contact/manager";
 import { CONTACT_ADD_PAGE_ROUTE_NAME } from "../contact_add/element";
 import { router } from "@/_app/router";
 import { CONTACT_LIST_PAGE_ROUTE_NAME } from "../contact_list/element";
+import { contactEditFormValuesStore } from "../contact_edit/store";
+import { CONTACT_EDIT_PAGE_ROUTE_NAME } from "../contact_edit/element";
 
 async function fetchContacts(): Promise<Contact[] | undefined> {
   try {
@@ -65,8 +67,8 @@ const DataView = (data: Contact[]) => {
   }
 
   const editContact = (contact: Contact) => {
-    // campaignEditFormValuesStore.getState().setStartValue(campaign);
-    //router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
+    contactEditFormValuesStore.getState().setStartValue(contact);
+    router.navigate(CONTACT_EDIT_PAGE_ROUTE_NAME);
   };
 
   function seeContacts() {

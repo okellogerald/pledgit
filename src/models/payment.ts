@@ -20,7 +20,7 @@ export const paymentInputSchema = z.object({
 export const paymentSchema = z.object({
   id: z.string(),
   amount: z.number(),
-  method: z.string(),
+  method: paymentMethodEnum,
   contactId: z.string(),
   pledgeId: z.string(),
   campaignId: z.string(),

@@ -26,6 +26,8 @@ import { PAYMENTS_ADD_PAGE_ROUTE_NAME, PaymentAddPage, PaymentAddPageLoader } fr
 import { PAYMENT_LIST_PAGE_ROUTE_NAME, PaymentListPage, PaymentListPageLoader } from "@/pages/payments/payment_list/element";
 import { PLEDGE_LIST_PAGE_ROUTE_NAME, PledgeListPage, PledgeListPageLoader } from "@/pages/pledge/pledge_list/element";
 import { CONTACT_LIST_PAGE_ROUTE_NAME, ContactListPage, ContactListPageLoader } from "@/pages/contact/contact_list/element";
+import { CONTACT_EDIT_PAGE_ROUTE_NAME, ContactEditPage, ContactEditPageLoader } from "@/pages/contact/contact_edit/element";
+import { PAYMENTS_EDIT_PAGE_ROUTE_NAME, PaymentEditPageLoader, PaymentEditPage } from "@/pages/payments/payment_edit/element";
 
 export const router = createHashRouter([
   {
@@ -74,5 +76,15 @@ export const router = createHashRouter([
     path: PLEDGE_LIST_PAGE_ROUTE_NAME,
     loader: PledgeListPageLoader,
     element: <PledgeListPage />,
+  },
+  {
+    path: CONTACT_EDIT_PAGE_ROUTE_NAME,
+    loader: ContactEditPageLoader,
+    element: <ContactEditPage />,
+  },
+  {
+    path: PAYMENTS_EDIT_PAGE_ROUTE_NAME,
+    loader: PaymentEditPageLoader,
+    element: <PaymentEditPage />,
   },
 ]);

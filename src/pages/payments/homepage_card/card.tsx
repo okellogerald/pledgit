@@ -12,6 +12,8 @@ import { formatTZAmount } from "@/utils/formatters";
 import { PAYMENTS_ADD_PAGE_ROUTE_NAME } from "../payment_add/element";
 import { router } from "@/_app/router";
 import { PAYMENT_LIST_PAGE_ROUTE_NAME } from "../payment_list/element";
+import { paymentEditFormValuesStore } from "../payment_edit/store";
+import { PAYMENTS_EDIT_PAGE_ROUTE_NAME } from "../payment_edit/element";
 
 async function fetchPayments(): Promise<Payment[] | undefined> {
   try {
@@ -60,16 +62,16 @@ const ErrorView = (tryAgainFN: () => void) => {
 };
 
 const DataView = (data: Payment[]) => {
-  function addCampaign() {
+  function add() {
      router.navigate(PAYMENTS_ADD_PAGE_ROUTE_NAME);
   }
 
-  const editCampaign = (payment: Payment) => {
-    // campaignEditFormValuesStore.getState().setStartValue(campaign);
-    //router.navigate(CAMPAIGN_EDIT_PAGE_ROUTE_NAME);
+  const edit = (payment: Payment) => {
+    paymentEditFormValuesStore.getState().setStartValue(payment);
+    router.navigate(PAYMENTS_EDIT_PAGE_ROUTE_NAME);
   };
 
-  function seeCampaigns() {
+  function seeAll() {
     router.navigate(PAYMENT_LIST_PAGE_ROUTE_NAME);
   }
 
@@ -86,9 +88,9 @@ const DataView = (data: Payment[]) => {
       >
         <h6 className={cardStyles.title}>Payments</h6>
         <div style={{ display: "flex" }}>
-          <OutlineButton label="Add New" onClick={addCampaign} />
+          <OutlineButton label="Add New" onClick={add} />
           <HSpace />
-          <OutlineButton label="See All" onClick={seeCampaigns} />
+          <OutlineButton label="See All" onClick={seeAll} />
         </div>
       </div>
       <VSpace space={20} />
@@ -103,7 +105,7 @@ const DataView = (data: Payment[]) => {
         <tbody>
           {data.map((e) => {
             return (
-              <tr key={e.id} onClick={() => editCampaign(e)}>
+              <tr key={e.id} onClick={() => edit(e)}>
                 <td className={cardStyles.td}>
                   {e.contact.firstName} {e.contact.lastName}
                 </td>

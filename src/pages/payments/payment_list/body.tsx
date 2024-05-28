@@ -24,6 +24,10 @@ export function PaymentListPageBody() {
       headerName: "Amount",
       valueGetter: (e) => formatTZAmount(e.data?.amount ?? 0),
     },
+    {
+      headerName: "Payment Method",
+      valueGetter: (e) => e.data?.method ?? "",
+    },
   ];
 
   return (
