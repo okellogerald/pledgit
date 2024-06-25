@@ -28,8 +28,13 @@
   },
   "include": [
     "src",
-    "electron",
-    "src/_app"
+    "src/_app",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx",
+    "**/**/**/*.tsx",
+    "**/**/**/**/*.tsx"
   ],
   "references": [
     {
